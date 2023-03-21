@@ -49,6 +49,6 @@
     - We think that this app is achievable by the end of the program. The ability to save audio recordings may be out of scope but every other aspect of the app seems achievable.
 
 ## Final selection App
-### Travel Planing App
+### Travel Planning App
 
 
