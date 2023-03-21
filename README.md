@@ -95,4 +95,5 @@ Packer is an app for helping you plan for your Trip. It will help you keep track
 
 ### [BONUS] Digital Wireframes & Mockups
 <img src="https://user-images.githubusercontent.com/90267420/226501407-c100518b-4c95-4a6c-9420-faa90f713a99.png" width=600>
+
 ### [BONUS] Interactive Prototype
