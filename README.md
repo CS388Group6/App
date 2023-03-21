@@ -14,7 +14,6 @@ Packer is an app for helping you plan for your Trip. It will help you keep track
 
 ### App Evaluation
 
-[Evaluation of your app across the following attributes]
 - **Mobile**
     - Functionality would include the ability for users to create accounts and plan the items they intend to take for their trip. We would implement the ability to plan for different types of trips such as flight, hiking, roadtrip etc. Flights have max weight limits and hikes have reccommended weight limits based off of the hikers body weight so we could give alerts if the user overpacks. Users would need to input the items they are bringing along with the weight. 
     - We would allow users to download a pdf/csv file of their trip inventory as hikes may be in areas that lack cell service. We would implement a database for data persistence and connect to the camera so that the user can add an image of items if they wish.
