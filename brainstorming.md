@@ -9,7 +9,7 @@
 
 ## Top 3 Ideas
 1. Bar Hopping App 
-2. Travel Plannig App
+2. Travel Planning App
 3. Money Saving Recipe App
 
 ## Categorize and Evaluate
@@ -50,6 +50,6 @@
 
 ### Final selection App
 
-## 
+## Travel Planing App
 
 
