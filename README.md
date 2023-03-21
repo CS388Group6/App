@@ -32,39 +32,61 @@ Packer is an app for helping you plan for your Trip. It will help you keep track
 
 **Required Features**
 
-* [fill in your required user features here]
-* ...
+* Login screen with login credentials stored in a database
+* The ability to create a trip. You can specify the type of trip, dates of the trip, and weight limits.
+* Users can add items and the weight of each item to the trip and our app will add the total weights.
+* Users can upload images of items
+* Users can delete trips as well
+* Bottom navigation bar for traversing pages
 
 **Stretch Features**
 
-* [fill in your optional user features here]
-* ...
+* The ability to export trips to a csv/pdf
+* The ability to take pictures directly within the app.
+* The ability to make copies of trips
+* Account personalization
 
 ### 2. Screen Archetypes
 
-- [list first screen here]
-  - [list associated required story here]
-  - ...
-- [list second screen here]
-  - [list associated required story here]
-  - ...
+- Login Screen
+  - We ask for the user for their username and password.
+  - If the correct username and password are provided then we move to the user specific list of trips, otherwise we display a message saying incorrect username/password combination.
+- List of Trips Made
+  - Here we have a list of trips made and users can select a trip and it will move them to the edit trip page.
+  - Users can also logout from this page.
+  - Users can also click a button that allows them to create a new trip.
+- New Trip Page
+  - This will ask users to enter a name for the trip and select the type of trip from a dropdown list. Options will be flight, road trip, hike, and camping trip.
+  - Users can optionally enter the dates, location, and weight limit of their trip.
+  - There will be a button that says "Create trip" that will only work once the name and type of trip is entered.
+- Edit Trip Page
+  - Users will be able to add a new item to the trip packing. This includes the name of the item, the quantity and the weight per item.
+  - Users can also delete items and change the quantity and weights of items.
+  - At the bottom of the page, there will be a button that says "Save" to update the trip in the database along with the current weight in the trip.
+  - Users can also add "bags" and add items to specific bags.
+- Register Page
+  - Users can enter a username and password and click a register button at the bottom of the page to register.
+  - If a username is in the database, we will display a message saying username already taken.
+
 
 ### 3. Navigation
 
 **Tab Navigation** (Tab to Screen)
 
-* [fill out your first tab]
-* [fill out your second tab]
-* [fill out your third tab]
+* Registration Tab - Leads to register page
+* Login Tab - Leads to the login page 
+* List Tab - Leads to the List of trips
+* New Trip Tab - Leads to the New Trip Page
+* Edit Trip Tab - Leads to the Edit Trip Page
 
 **Flow Navigation** (Screen to Screen)
 
-- [list first screen here]
-  - [list screen navigation here]
-  - ...
-- [list second screen here]
-  - [list screen navigation here]
-  - ...
+- Login Page
+  - Successful login leads to the list of trips
+- Register Page
+  - Successful registration leads to the login page
+- List Tab, New Trip Page, and Edit Trip
+  - Navigation Bar at the bottom can lead to any of the pages in the heading.
 
 ## Wireframes
 
