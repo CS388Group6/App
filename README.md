@@ -32,19 +32,19 @@ Packer is an app for helping you plan for your Trip. It will help you keep track
 
 **Required Features**
 
-* Login screen with login credentials stored in a database
-* The ability to create a trip. You can specify the type of trip, dates of the trip, and weight limits.
-* Users can add items and the weight of each item to the trip and our app will add the total weights.
-* Users can upload images of items
-* Users can delete trips as well
-* Bottom navigation bar for traversing pages
+- [ ] Login screen with login credentials stored in a database
+- [ ] The ability to create a trip. You can specify the type of trip, dates of the trip, and weight limits.
+- [ ] Users can add items and the weight of each item to the trip and our app will add the total weights.
+- [ ] Users can upload images of items
+- [ ] Users can delete trips as well
+- [ ] Bottom navigation bar for traversing pages
 
 **Stretch Features**
 
-* The ability to export trips to a csv/pdf
-* The ability to take pictures directly within the app.
-* The ability to make copies of trips
-* Account personalization
+- [ ] The ability to export trips to a csv/pdf
+- [ ] The ability to take pictures directly within the app.
+- [ ] The ability to make copies of trips
+- [ ] Account personalization
 
 ### 2. Screen Archetypes
 
