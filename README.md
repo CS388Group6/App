@@ -1,4 +1,4 @@
-# Milestone 1 - Packer
+# Packer
 
 ## Table of Contents
 
@@ -32,6 +32,8 @@ Packer is an app for helping you plan for your Trip. It will help you keep track
 
 **Required Features**
 
+- [X] Setup GitHub issues and project board
+- [X] Design Database Structure and Implement Database
 - [ ] Login screen with login credentials stored in a database
 - [ ] The ability to create a trip. You can specify the type of trip, dates of the trip, and weight limits.
 - [ ] Users can add items and the weight of each item to the trip and our app will add the total weights.
@@ -96,4 +98,21 @@ Packer is an app for helping you plan for your Trip. It will help you keep track
 ### [BONUS] Digital Wireframes & Mockups
 <img src="https://user-images.githubusercontent.com/90267420/226501407-c100518b-4c95-4a6c-9420-faa90f713a99.png" width=600>
 
-### [BONUS] Interactive Prototype
+## Progress
+
+### Unit 8: Build Sprint 1
+- [X] Setup GitHub issues and project board
+##### NO GIF for this week as we just setup github
+### Unit 9: Build Sprint 2
+- [X] Design Database Structure and Implement Database
+![database structure](https://user-images.githubusercontent.com/90267420/229670821-0500766e-66ea-48ad-adfb-e2371bc7f159.gif)
+
+<!--### Unit 10: Build Sprint 3
+
+### Unit 11: Build Sprint 4
+
+### Unit 12: Build Sprint 5
+
+### Unit 13: Build Sprint 6-->
+
+
