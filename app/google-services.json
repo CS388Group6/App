@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "395862585961",
+    "project_id": "packer-425f2",
+    "storage_bucket": "packer-425f2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:395862585961:android:1b1f6ee73b771cdf79a8f8",
+        "android_client_info": {
+          "package_name": "com.cs388group6.packer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "395862585961-rfpe5m5ta6cp1db7n0rg9v6np0t2u6gh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXHMdlXcnB_Xr4R-kqMr6qy3p5raotfwI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "395862585961-rfpe5m5ta6cp1db7n0rg9v6np0t2u6gh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
