@@ -1,9 +1,11 @@
 package com.cs388group6.packer
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -19,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         auth = Firebase.auth
 
         findViewById<Button>(R.id.loginButton).setOnClickListener {
-            var email = findViewById<TextView>(R.id.username).text
+            var email = findViewById<TextView>(R.id.email).text
             var password = findViewById<TextView>(R.id.password).text
 
             auth.signInWithEmailAndPassword(email as String, password as String)
@@ -31,6 +33,11 @@ class MainActivity : AppCompatActivity() {
                         Log.d("MAINACTIVITY", "user fucked")
                     }
                 }
+        }
+
+        findViewById<Button>(R.id.signUpScreen).setOnClickListener {
+            val intent = Intent(this, SignUp::class.java)
+            startActivity(intent)
         }
     }
 
