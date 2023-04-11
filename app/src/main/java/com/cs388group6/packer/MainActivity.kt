@@ -8,6 +8,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
+import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -43,6 +45,23 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             setContentView(R.layout.add_trip_screen)
         }
+
+        val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottom_navigation)
+
+        // handle navigation selection
+//        bottomNavigationView.setOnItemSelectedListener { item ->
+//            lateinit var fragment: Fragment
+//            when (item.itemId) {
+//                R.id.nav_list -> fragment = listFragment
+//                R.id.nav_summary -> fragment = summaryFragment
+//            }
+//            replaceFragment(fragment)
+//            true
+//        }
+//        createNotificationChannel()
+
+        // Set default selection
+        bottomNavigationView.selectedItemId = R.id.nav_list
     }
 
     override fun onStart() {
