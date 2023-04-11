@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Spinner
 import android.widget.TextView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -40,6 +41,9 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
+    val spinner: Spinner = findViewById(R.id.chooseWeightUnitView)
+
 
     override fun onStart() {
         super.onStart()
