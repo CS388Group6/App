@@ -42,9 +42,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    val spinner: Spinner = findViewById(R.id.chooseWeightUnitView)
-
-
     override fun onStart() {
         super.onStart()
 
