@@ -34,6 +34,11 @@ Packer is an app for helping you plan for your Trip. It will help you keep track
 
 - [X] Setup GitHub issues and project board
 - [X] Design Database Structure and Implement Database
+- [X] Implement Database Using Firebase
+- [X] Implement Auth Using Firebase
+- [X] Create Login Page 
+- [X] Create Sign Up Page 
+- [X] Create Bottom Navigation Bar
 - [ ] Login screen with login credentials stored in a database
 - [ ] The ability to create a trip. You can specify the type of trip, dates of the trip, and weight limits.
 - [ ] Users can add items and the weight of each item to the trip and our app will add the total weights.
@@ -107,9 +112,17 @@ Packer is an app for helping you plan for your Trip. It will help you keep track
 - [X] Design Database Structure and Implement Database
 ![database structure](https://user-images.githubusercontent.com/90267420/229670821-0500766e-66ea-48ad-adfb-e2371bc7f159.gif)
 
-<!--### Unit 10: Build Sprint 3
+### Unit 10: Build Sprint 3
+- [X] Implement Database Using Firebase
+- [X] Implement Auth Using Firebase
+- [X] Create Login Page 
+- [X] Create Sign Up Page 
+- [X] Create Bottom Navigation Bar
 
-### Unit 11: Build Sprint 4
+![buildsprint3](https://user-images.githubusercontent.com/90267420/231060432-057c26d6-c0b3-4aec-8a15-f1bf4bc6951d.gif)
+
+
+<!--### Unit 11: Build Sprint 4
 
 ### Unit 12: Build Sprint 5
 
