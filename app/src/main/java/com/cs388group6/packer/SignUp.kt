@@ -46,7 +46,7 @@ class SignUp : AppCompatActivity(){
 
                     else {
                         Log.w("SignUp", "createUserFailure: ", task.exception )
-                        Toast.makeText(baseContext, "Authentication failed.",
+                        Toast.makeText(baseContext, task.exception?.message ,
                             Toast.LENGTH_SHORT).show()
                     }
                 }
