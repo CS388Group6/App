@@ -25,10 +25,12 @@ class MainActivity : AppCompatActivity() {
             var email = findViewById<TextView>(R.id.email).text
             var password = findViewById<TextView>(R.id.password).text
 
-            auth.signInWithEmailAndPassword(email as String, password as String)
+            auth.signInWithEmailAndPassword(email.toString(), password.toString())
                 .addOnCompleteListener {
                     if (it.isSuccessful) {
                         Log.d("MAINACTIVITY","USER LOGGED IN")
+                        setContentView(R.layout.add_trip_screen)
+
                     }
                     else {
                         Log.d("MAINACTIVITY", "user fucked")
@@ -39,6 +41,7 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.signUpScreen).setOnClickListener {
             val intent = Intent(this, SignUp::class.java)
             startActivity(intent)
+            setContentView(R.layout.add_trip_screen)
         }
     }
 
