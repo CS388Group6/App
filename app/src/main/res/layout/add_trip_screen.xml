@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/addTripTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:text="New Trip"
+        android:textColor="#115E59"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/editTripNameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:text="Trip Name"
+        android:textColor="#115E59"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addTripTitle" />
+
+    <EditText
+        android:id="@+id/tripNameEditView"
+        android:layout_width="342dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Arapaho Pass Trail"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTripNameLabel" />
+
+    <TextView
+        android:id="@+id/editTripLocationLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:text="Trip Location"
+        android:textColor="#115E59"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tripNameEditView" />
+
+    <EditText
+        android:id="@+id/tripLocationEditView"
+        android:layout_width="347dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="4800 4th of July Rd, Nederland, CO 80466"
+        android:inputType="textPostalAddress"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTripLocationLabel" />
+
+    <TextView
+        android:id="@+id/tripDateEditLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:text="Trip Date"
+        android:textColor="#115E59"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tripLocationEditView" />
+
+    <EditText
+        android:id="@+id/tripDateEditView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="170dp"
+        android:ems="10"
+        android:hint="June 12, 2023"
+        android:inputType="date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tripDateEditLabel" />
+
+    <TextView
+        android:id="@+id/tripDescriptionEditLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:text="Trip Description"
+        android:textColor="#115E59"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tripDateEditView" />
+
+    <EditText
+        android:id="@+id/tripDescriptionEditView"
+        android:layout_width="344dp"
+        android:layout_height="177dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="Experience this 7.1-mile out-and-back trail near Nederland, Colorado. Generally considered a moderately challenging route, it takes an average of 4 h 4 min to complete. "
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tripDescriptionEditLabel" />
+
+    <ImageButton
+        android:id="@+id/tripImageEditView"
+        android:layout_width="216dp"
+        android:layout_height="151dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/bigs_colorado_spring_landscape_on_arapahoe_pass_in_the_rocky_mountains_large"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tripImageEditLabel"
+        tools:src="@drawable/bigs_colorado_spring_landscape_on_arapahoe_pass_in_the_rocky_mountains_large" />
+
+    <TextView
+        android:id="@+id/tripImageEditLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:text="Trip Image"
+        android:textColor="#115E59"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tripDescriptionEditView" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="#115E59"
+        android:text="✅Save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:backgroundTint="#115E59"
+        android:text="✏️Edit"
+        app:layout_constraintBottom_toBottomOf="@+id/tripImageEditView"
+        app:layout_constraintStart_toEndOf="@+id/tripImageEditView"
+        app:layout_constraintTop_toTopOf="@+id/tripImageEditView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
