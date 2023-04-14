@@ -6,13 +6,13 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/deleteTripConfirmMessage"
         android:layout_width="326dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="200dp"
         android:layout_marginEnd="32dp"
-        android:text="Are you sure you want to delete &quot;Arapaho Pass Trail&quot; from your list of trips?"
+        android:text="Are you sure you want to delete &quot;&quot; from your list of trips?"
         android:textAlignment="center"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -21,25 +21,25 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button8"
+        android:id="@+id/deleteTripNoButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:backgroundTint="#7f1d1d"
         android:text="No"
-        app:layout_constraintStart_toStartOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintStart_toStartOf="@+id/deleteTripConfirmMessage"
+        app:layout_constraintTop_toBottomOf="@+id/deleteTripConfirmMessage" />
 
     <Button
-        android:id="@+id/button9"
+        android:id="@+id/deleteTripYesButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:backgroundTint="#115E59"
         android:text="Yes"
-        app:layout_constraintEnd_toEndOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintEnd_toEndOf="@+id/deleteTripConfirmMessage"
+        app:layout_constraintTop_toBottomOf="@+id/deleteTripConfirmMessage" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,7 +14,7 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/loginScreenLogo" />
 
     <EditText
         android:id="@+id/password"
@@ -53,7 +53,7 @@
         app:layout_constraintTop_toBottomOf="@+id/loginButton" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/loginScreenLogo"
         android:layout_width="317dp"
         android:layout_height="334dp"
         app:layout_constraintEnd_toEndOf="parent"
