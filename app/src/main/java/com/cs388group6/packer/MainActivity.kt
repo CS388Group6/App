@@ -5,10 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
-import android.widget.EditText
-import android.widget.Spinner
 import android.widget.TextView
-import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -31,7 +28,7 @@ class MainActivity : AppCompatActivity() {
                 .addOnCompleteListener {
                     if (it.isSuccessful) {
                         Log.d("MAINACTIVITY","USER LOGGED IN")
-                        setContentView(R.layout.add_trip_screen)
+                        setContentView(R.layout.trip_add_screen)
 
                     }
                     else {
@@ -43,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.signUpScreen).setOnClickListener {
             val intent = Intent(this, SignUp::class.java)
             startActivity(intent)
-//            setContentView(R.layout.add_trip_screen)
+            setContentView(R.layout.trip_add_screen)
         }
 
 
