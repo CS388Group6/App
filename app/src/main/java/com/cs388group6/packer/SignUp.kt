@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -50,6 +51,20 @@ class SignUp : AppCompatActivity(){
                             Toast.LENGTH_SHORT).show()
                     }
                 }
+        }
+
+        // handle navigation selection
+        val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottom_navigation)
+        bottomNavigationView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.nav_home -> {
+                    startActivity(Intent(this,MainActivity::class.java))
+                }
+                R.id.nav_login -> {
+                    startActivity(Intent(this, SignUp::class.java))
+                }
+            }
+            true
         }
 
     }

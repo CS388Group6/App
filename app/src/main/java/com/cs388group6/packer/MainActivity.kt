@@ -43,25 +43,27 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.signUpScreen).setOnClickListener {
             val intent = Intent(this, SignUp::class.java)
             startActivity(intent)
-            setContentView(R.layout.add_trip_screen)
+//            setContentView(R.layout.add_trip_screen)
         }
 
-        val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottom_navigation)
 
         // handle navigation selection
-//        bottomNavigationView.setOnItemSelectedListener { item ->
-//            lateinit var fragment: Fragment
-//            when (item.itemId) {
-//                R.id.nav_list -> fragment = listFragment
-//                R.id.nav_summary -> fragment = summaryFragment
-//            }
-//            replaceFragment(fragment)
-//            true
-//        }
+        val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottom_navigation)
+        bottomNavigationView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.nav_home -> {
+                    startActivity(Intent(this,MainActivity::class.java))
+                }
+                R.id.nav_login -> {
+                    startActivity(Intent(this, SignUp::class.java))
+                }
+            }
+            true
+        }
 //        createNotificationChannel()
 
         // Set default selection
-        bottomNavigationView.selectedItemId = R.id.nav_list
+//        bottomNavigationView.selectedItemId = R.id.nav_login
     }
 
     override fun onStart() {
