@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="3dp"
+    android:layout_margin="15dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F4F4F4"
+        android:padding="10dp">
+
+
+        <TextView
+            android:id="@+id/itemsListRVRowTitleLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sony RX100 VII Camera"
+            android:textColor="#115E59"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/itemsListRVRowWeightLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="420 grams"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/itemsListRVRowTitleLabel" />
+
+        <ImageView
+            android:id="@+id/itemsListRVRowImageDisplay"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/rx100" />
+
+        <TextView
+            android:id="@+id/itemsListRVRowCategoryLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Electronics"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/itemsListRVRowImageDisplay"
+            app:layout_constraintStart_toEndOf="@+id/itemsListRVRowWeightLabel"
+            app:layout_constraintTop_toBottomOf="@+id/itemsListRVRowTitleLabel" />
+
+        <Button
+            android:id="@+id/itemsListRVDeleteButton"
+            android:layout_width="61dp"
+            android:layout_height="33dp"
+            android:layout_marginLeft="8dp"
+            android:backgroundTint="#115E59"
+            android:includeFontPadding="false"
+            android:paddingLeft="0dp"
+            android:paddingTop="0dp"
+            android:paddingRight="0dp"
+            android:paddingBottom="0dp"
+            android:text="Delete"
+            android:textAllCaps="false"
+            app:layout_constraintStart_toEndOf="@+id/itemsListRVEditButton"
+            app:layout_constraintTop_toBottomOf="@+id/itemsListRVRowCategoryLabel" />
+
+        <Button
+            android:id="@+id/itemsListRVEditButton"
+            android:layout_width="61dp"
+            android:layout_height="33dp"
+            android:backgroundTint="#115E59"
+            android:includeFontPadding="false"
+            android:paddingLeft="0dp"
+            android:paddingTop="0dp"
+            android:paddingRight="0dp"
+            android:paddingBottom="0dp"
+            android:text="Edit"
+            android:textAllCaps="false"
+            app:layout_constraintTop_toBottomOf="@+id/itemsListRVRowWeightLabel"
+            tools:layout_editor_absoluteX="0dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
