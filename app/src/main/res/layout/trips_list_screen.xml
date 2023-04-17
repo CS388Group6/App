@@ -10,10 +10,13 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="32dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tripsListScreenTitleLabel" />
+        app:layout_constraintTop_toBottomOf="@+id/tripsListScreenTitleLabel"
+        app:layout_constraintVertical_bias="0.0"
+        tools:listitem="@layout/trips_list_rv_row" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton"
@@ -24,9 +27,9 @@
         android:clickable="true"
         app:tint="#FFFFFF"
         app:backgroundTint="#115E59"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/icon_add" />
+        app:srcCompat="@drawable/add_icon" />
 
     <TextView
         android:id="@+id/tripsListScreenTitleLabel"
@@ -40,4 +43,13 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/bottom_navigation_home_menu" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

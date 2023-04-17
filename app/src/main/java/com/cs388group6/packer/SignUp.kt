@@ -53,19 +53,24 @@ class SignUp : AppCompatActivity(){
                 }
         }
 
-        // handle navigation selection
+        // Bottom Navigation Selection
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottom_navigation)
         bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.nav_home -> {
-                    startActivity(Intent(this,MainActivity::class.java))
-                }
                 R.id.nav_login -> {
-                    startActivity(Intent(this, SignUp::class.java))
+                    startActivity(Intent(this, MainActivity::class.java))
+                }
+                R.id.nav_logout -> {
+                    startActivity(Intent(this, MainActivity::class.java))
+                }
+                R.id.nav_home -> {
+                    startActivity(Intent(this, TripList::class.java))
+                }
+                R.id.nav_list -> {
+                    startActivity(Intent(this, MyItemList::class.java))
                 }
             }
             true
         }
-
     }
 }

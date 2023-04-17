@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
+import androidx.fragment.app.Fragment
+import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -28,7 +30,8 @@ class MainActivity : AppCompatActivity() {
                 .addOnCompleteListener {
                     if (it.isSuccessful) {
                         Log.d("MAINACTIVITY","USER LOGGED IN")
-                        setContentView(R.layout.trip_add_screen)
+                        val intent = Intent(this, TripList::class.java)
+                        startActivity(intent)
 
                     }
                     else {
@@ -40,27 +43,32 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.signUpScreen).setOnClickListener {
             val intent = Intent(this, SignUp::class.java)
             startActivity(intent)
-            setContentView(R.layout.trip_add_screen)
+//            setContentView(R.layout.trips_list_screen)
         }
 
-
-        // handle navigation selection
+        // Bottom Navigation Selection
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottom_navigation)
         bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.nav_home -> {
-                    startActivity(Intent(this,MainActivity::class.java))
-                }
                 R.id.nav_login -> {
-                    startActivity(Intent(this, SignUp::class.java))
+                    startActivity(Intent(this, MainActivity::class.java))
+                }
+                R.id.nav_logout -> {
+                    startActivity(Intent(this, MainActivity::class.java))
+                }
+                R.id.nav_home -> {
+                    startActivity(Intent(this, TripList::class.java))
+                }
+                R.id.nav_list -> {
+                    startActivity(Intent(this, MyItemList::class.java))
                 }
             }
             true
         }
-//        createNotificationChannel()
-
-        // Set default selection
+        //Set default selection
 //        bottomNavigationView.selectedItemId = R.id.nav_login
+
+
     }
 
     override fun onStart() {
