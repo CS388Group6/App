@@ -1,45 +1,20 @@
 package com.cs388group6.packer
 
-import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
-
-class TripList: AppCompatActivity() {
+class TripListAdd : AppCompatActivity() {
     private lateinit var database: DatabaseReference
-    private lateinit var adapter: TripListAdapter
-//    private val trips = java.util.ArrayList<Trip>()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.trips_list_screen)
-        database = FirebaseDatabase.getInstance().reference
-        val recyclerView = findViewById<RecyclerView>(R.id.tripsListRV)
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        adapter = TripListAdapter(ArrayList())
-        recyclerView.adapter = adapter
+        setContentView(R.layout.trip_add_screen)
 
-        //Add trip button
-        findViewById<FloatingActionButton>(R.id.floatingActionButton).setOnClickListener {
-            val intent = Intent(this, TripListAdd::class.java)
-            startActivity(intent)
-////            setContentView(R.layout.trips_list_screen)
-        }
+        database = FirebaseDatabase.getInstance().reference
+
 
 
         //Set default selection
@@ -54,6 +29,7 @@ class TripList: AppCompatActivity() {
             true
         }
         bottomNavigationView1.selectedItemId = R.id.nav_home
+
         // Bottom Navigation Selection
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottom_navigation)
         bottomNavigationView.setOnItemSelectedListener { item ->
@@ -75,6 +51,3 @@ class TripList: AppCompatActivity() {
         }
     }
 }
-
-
-

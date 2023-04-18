@@ -11,6 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Packer"
         tools:targetApi="31">
+        <activity android:name=".MyItemListAdd"
+            android:exported="true"/>
+        <activity android:name=".TripListAdd"
+            android:exported="true"/>
         <activity android:name=".MyItemList"
             android:exported="true"/>
         <activity android:name=".SignUp"

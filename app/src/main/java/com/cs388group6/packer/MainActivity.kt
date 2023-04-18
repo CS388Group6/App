@@ -36,10 +36,14 @@ class MainActivity : AppCompatActivity() {
                     }
                     else {
                         Log.d("MAINACTIVITY", "user fucked")
+
                     }
                 }
         }
-
+//        Alerter.create(this@MainActivity)
+//            .setTitle("Alert Title")
+//            .setText("Alert text...")
+//            .show()
         findViewById<Button>(R.id.signUpScreen).setOnClickListener {
             val intent = Intent(this, SignUp::class.java)
             startActivity(intent)

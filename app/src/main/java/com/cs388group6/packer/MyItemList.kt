@@ -2,10 +2,12 @@ package com.cs388group6.packer
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
@@ -21,6 +23,12 @@ class MyItemList : AppCompatActivity(){
         recyclerView.layoutManager = LinearLayoutManager(this)
         adapter = MyItemListAdapter(ArrayList())
         recyclerView.adapter = adapter
+
+        //Add item button
+        findViewById<FloatingActionButton>(R.id.floatingActionButton).setOnClickListener {
+            val intent = Intent(this, MyItemListAdd::class.java)
+            startActivity(intent)
+        }
 
         //Set default selection
         val bottomNavigationView1: BottomNavigationView = findViewById(R.id.bottom_navigation)
