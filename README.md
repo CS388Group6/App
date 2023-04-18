@@ -39,12 +39,18 @@ Packer is an app for helping you plan for your Trip. It will help you keep track
 - [X] Create Login Page 
 - [X] Create Sign Up Page 
 - [X] Create Bottom Navigation Bar
-- [ ] Login screen with login credentials stored in a database
+- [X] Login screen with login credentials stored in a database
+- [X] Bottom navigation bar for traversing pages
+- [X] Create Trip List Page 
+- [X] Create My Items list Page 
+- [X] Create Add Trip Page
+- [X] Create Add My Item Page
+- [X] UI Design Refinement
 - [ ] The ability to create a trip. You can specify the type of trip, dates of the trip, and weight limits.
 - [ ] Users can add items and the weight of each item to the trip and our app will add the total weights.
 - [ ] Users can upload images of items
 - [ ] Users can delete trips as well
-- [ ] Bottom navigation bar for traversing pages
+
 
 **Stretch Features**
 
@@ -122,9 +128,16 @@ Packer is an app for helping you plan for your Trip. It will help you keep track
 ![buildsprint3](https://user-images.githubusercontent.com/90267420/231060432-057c26d6-c0b3-4aec-8a15-f1bf4bc6951d.gif)
 
 
-<!--### Unit 11: Build Sprint 4
+### Unit 11: Build Sprint 4
+- [X] Login screen with login credentials stored in a database
+- [X] Bottom navigation bar for traversing pages
+- [X] Create Trip List Page 
+- [X] Create My Items list Page 
+- [X] Create Add Trip Page
+- [X] Create Add My Item Page
+- [X] UI Design Refinement
 
-### Unit 12: Build Sprint 5
+<!--### Unit 12: Build Sprint 5
 
 ### Unit 13: Build Sprint 6-->
 
