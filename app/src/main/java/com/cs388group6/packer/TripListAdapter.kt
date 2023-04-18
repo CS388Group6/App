@@ -27,19 +27,18 @@ class TripListAdapter(private var trips: ArrayList<Trip>) :
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val title = itemView.findViewById<TextView>(R.id.tripListRVRowTitleLabel)
-        private val bags = itemView.findViewById<TextView>(R.id.tripsListRVRowBagsLabel)
-        private val weight = itemView.findViewById<TextView>(R.id.tripListRVRowWeightLabel)
         private val weather = itemView.findViewById<ImageView>(R.id.itemsListRVRowWeatherDisplay)
         private val numItems = itemView.findViewById<TextView>(R.id.tripsListRVRowNumItemsLabel)
         private val date = itemView.findViewById<TextView>(R.id.tripsListRVRowDateLabel)
 
 
+
         fun bind(variable:Trip) {
             title.text = variable.title
-            bags.text = variable.bags
-            weight.text = variable.weight
+//            bags.text = variable.bags
+//            weight.text = variable.weight
 //            weather.text = text.weather
-            numItems.text = variable.numItems
+//            numItems.text = variable.numItems
             date.text = variable.date
         }
     }
