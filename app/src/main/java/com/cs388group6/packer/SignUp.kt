@@ -54,12 +54,12 @@ class SignUp : AppCompatActivity(){
                     else {
                         Log.w("SignUp", "createUserFailure: ", task.exception )
                         Alerter.create(this@SignUp)
-                            .setTitle(task.exception?.message.toString())
+                            .setTitle("Try Again")
                             .setBackgroundColorRes(R.color.red)
                             .setIcon(R.drawable.icon_clear)
                             .show()
-//                        Toast.makeText(baseContext, task.exception?.message ,
-////                            Toast.LENGTH_SHORT).show()
+                        Toast.makeText(baseContext, task.exception?.message ,
+                            Toast.LENGTH_SHORT).show()
                     }
                 }
         }
@@ -68,10 +68,18 @@ class SignUp : AppCompatActivity(){
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottom_navigation)
         bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.nav_login -> { startActivity(Intent(this, MainActivity::class.java)) }
-                R.id.nav_logout -> { startActivity(Intent(this, MainActivity::class.java)) }
-                R.id.nav_home -> { startActivity(Intent(this, TripList::class.java)) }
-                R.id.nav_list -> { startActivity(Intent(this, MyItemList::class.java)) }
+                R.id.nav_login -> {
+                    startActivity(Intent(this, MainActivity::class.java))
+                }
+                R.id.nav_logout -> {
+                    startActivity(Intent(this, MainActivity::class.java))
+                }
+                R.id.nav_home -> {
+                    startActivity(Intent(this, TripList::class.java))
+                }
+                R.id.nav_list -> {
+                    startActivity(Intent(this, MyItemList::class.java))
+                }
             }
             true
         }

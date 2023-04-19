@@ -12,7 +12,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.tapadoo.alerter.Alerter
 
 class MainActivity : AppCompatActivity() {
 
@@ -37,11 +36,7 @@ class MainActivity : AppCompatActivity() {
                     }
                     else {
                         Log.d("MAINACTIVITY", "user fucked")
-                        Alerter.create(this@MainActivity)
-                            .setTitle(it.exception?.message.toString())
-                            .setBackgroundColorRes(R.color.red)
-                            .setIcon(R.drawable.icon_clear)
-                            .show()
+
                     }
                 }
         }
@@ -59,10 +54,18 @@ class MainActivity : AppCompatActivity() {
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottom_navigation)
         bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.nav_login -> { startActivity(Intent(this, MainActivity::class.java)) }
-                R.id.nav_logout -> { startActivity(Intent(this, MainActivity::class.java)) }
-                R.id.nav_home -> { startActivity(Intent(this, TripList::class.java)) }
-                R.id.nav_list -> { startActivity(Intent(this, MyItemList::class.java)) }
+                R.id.nav_login -> {
+                    startActivity(Intent(this, MainActivity::class.java))
+                }
+                R.id.nav_logout -> {
+                    startActivity(Intent(this, MainActivity::class.java))
+                }
+                R.id.nav_home -> {
+                    startActivity(Intent(this, TripList::class.java))
+                }
+                R.id.nav_list -> {
+                    startActivity(Intent(this, MyItemList::class.java))
+                }
             }
             true
         }

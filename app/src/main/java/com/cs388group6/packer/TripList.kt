@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -65,12 +64,12 @@ class TripList: AppCompatActivity() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Log.w(TAG, "loadPost:onCancelled", error.toException())
+
             }
 
         })
 
-        //Trip Add button
+        //Add trip button
         findViewById<FloatingActionButton>(R.id.floatingActionButton).setOnClickListener {
             val intent = Intent(this, TripListAdd::class.java)
             startActivity(intent)
@@ -93,10 +92,18 @@ class TripList: AppCompatActivity() {
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottom_navigation)
         bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.nav_login -> { startActivity(Intent(this, MainActivity::class.java)) }
-                R.id.nav_logout -> {startActivity(Intent(this, MainActivity::class.java)) }
-                R.id.nav_home -> { startActivity(Intent(this, TripList::class.java)) }
-                R.id.nav_list -> { startActivity(Intent(this, MyItemList::class.java)) }
+                R.id.nav_login -> {
+                    startActivity(Intent(this, MainActivity::class.java))
+                }
+                R.id.nav_logout -> {
+                    startActivity(Intent(this, MainActivity::class.java))
+                }
+                R.id.nav_home -> {
+                    startActivity(Intent(this, TripList::class.java))
+                }
+                R.id.nav_list -> {
+                    startActivity(Intent(this, MyItemList::class.java))
+                }
             }
             true
         }
