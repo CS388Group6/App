@@ -11,6 +11,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.tapadoo.alerter.Alerter
 
 class SignUp : AppCompatActivity(){
 
@@ -41,12 +42,22 @@ class SignUp : AppCompatActivity(){
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         Log.d("SignUp", "createUserWithEmail:success")
+                        Alerter.create(this@SignUp)
+                            .setTitle("Successfull")
+                            .setBackgroundColorRes(R.color.green)
+                            .setIcon(R.drawable.icon_check)
+                            .show()
                         val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
                     }
 
                     else {
                         Log.w("SignUp", "createUserFailure: ", task.exception )
+                        Alerter.create(this@SignUp)
+                            .setTitle("Try Again")
+                            .setBackgroundColorRes(R.color.red)
+                            .setIcon(R.drawable.icon_clear)
+                            .show()
                         Toast.makeText(baseContext, task.exception?.message ,
                             Toast.LENGTH_SHORT).show()
                     }

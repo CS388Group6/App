@@ -16,7 +16,6 @@ class MyItemListAdd : AppCompatActivity() {
         database = FirebaseDatabase.getInstance().reference
 
 
-
         //Set default selection
         val bottomNavigationView1: BottomNavigationView = findViewById(R.id.bottom_navigation)
         bottomNavigationView1.setOnItemSelectedListener { item ->
