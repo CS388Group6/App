@@ -1,8 +1,10 @@
 package com.cs388group6.packer
 
+import android.content.ContentValues
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -53,7 +55,7 @@ class TripOverView : AppCompatActivity() {
                 }
 
                 override fun onCancelled(error: DatabaseError) {
-                    TODO("Not yet implemented")
+                    Log.w(ContentValues.TAG, "loadPost:onCancelled", error.toException())
                 }
 
             })
@@ -62,19 +64,20 @@ class TripOverView : AppCompatActivity() {
         //Trip Edit button
         findViewById<FloatingActionButton>(R.id.tripOverviewEditButton).setOnClickListener {
             val intent = Intent(this, TripListAdd::class.java)
+            //TODO: Add trip ID to intent and modify triplistadd to support editing
             startActivity(intent)
         }
 
         //Trip Delete button
         findViewById<FloatingActionButton>(R.id.tripOverviewDeleteButton).setOnClickListener {
-            val intent = Intent(this, TripListAdd::class.java)
-            startActivity(intent)
+            //val intent = Intent(this, TripListAdd::class.java)
+            //startActivity(intent)
+            //TODO: Send to the delete confirmation page
         }
 
         //Trip Item Add button
         findViewById<FloatingActionButton>(R.id.tripOverviewAddItemButton).setOnClickListener {
-            val intent = Intent(this, TripListAdd::class.java)
-            startActivity(intent)
+            //TODO: Pull up item list and pick item
         }
 
         //Set default selection
