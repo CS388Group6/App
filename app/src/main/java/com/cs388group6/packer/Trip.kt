@@ -2,6 +2,7 @@ package com.cs388group6.packer
 
 import java.io.Serializable
 data class Trip (
+    var tripID: String? = null,
     var title: String? = null,
     var weather: String? = null,
     var date: String? = null,
