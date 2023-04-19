@@ -72,6 +72,7 @@ class TripList: AppCompatActivity() {
         //Add trip button
         findViewById<FloatingActionButton>(R.id.floatingActionButton).setOnClickListener {
             val intent = Intent(this, TripListAdd::class.java)
+            intent.putExtra("trip", "")
             startActivity(intent)
         }
 

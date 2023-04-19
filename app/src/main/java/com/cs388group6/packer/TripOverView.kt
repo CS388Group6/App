@@ -68,7 +68,9 @@ class TripOverView : AppCompatActivity() {
         }
 
         editButton.setOnClickListener {
-            //TODO: send to TripListAdd activity and modify it to handle edits
+            var intent = Intent(this, TripListAdd::class.java)
+            intent.putExtra("trip", tripID)
+            startActivity(intent)
         }
 
         deleteButton.setOnClickListener {

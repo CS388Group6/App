@@ -2,6 +2,7 @@ package com.cs388group6.packer
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -9,8 +10,11 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
 
 class TripListAdd : AppCompatActivity() {
@@ -38,6 +42,29 @@ class TripListAdd : AppCompatActivity() {
         saveButton = findViewById(R.id.editTripSaveButton)
         cancelButton = findViewById(R.id.editTripCancelButton)
 
+        var key = intent.getStringExtra("trip")
+
+        if (key != null && key != ""){
+            database.child("Trips").child(key).addValueEventListener(object :
+                ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()){
+                        val trip = snapshot.getValue(Trip::class.java)
+
+                        tripNameInput.setText(trip!!.title)
+                        tripLocationInput.setText(trip!!.location)
+                        tripDescInput.setText(trip!!.description)
+                        tripDateInput.setText(trip!!.date)
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Log.w( "loadPost:onCancelled", error.toException())
+                }
+
+            })
+        }
+
         cancelButton.setOnClickListener {
             finish()
         }
@@ -59,8 +86,9 @@ class TripListAdd : AppCompatActivity() {
                 Toast.makeText(this, "Please Enter A Trip Description", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-
-            var key = database.child("Trips").push().key.toString()
+            if (key == "") {
+                key = database.child("Trips").push().key.toString()
+            }
             val trip = Trip(title = tripNameInput.text.toString(),
                 location = tripLocationInput.text.toString(),
                 date = tripDateInput.text.toString(),
@@ -70,7 +98,7 @@ class TripListAdd : AppCompatActivity() {
                 items = mutableListOf(String()),
                 tripID = key
             )
-            database.child("Trips").child(key).setValue(trip)
+            database.child("Trips").child(key!!).setValue(trip)
             finish()
         }
 
