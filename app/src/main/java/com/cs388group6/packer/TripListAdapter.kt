@@ -10,7 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import java.util.*
 
-class TripListAdapter(private var trips: ArrayList<Trip>) :
+class TripListAdapter(private var trips: MutableList<Trip>) :
     RecyclerView.Adapter<TripListAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.trips_list_rv_row, parent, false)
@@ -27,20 +27,21 @@ class TripListAdapter(private var trips: ArrayList<Trip>) :
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val title = itemView.findViewById<TextView>(R.id.tripListRVRowTitleLabel)
-        private val bags = itemView.findViewById<TextView>(R.id.tripsListRVRowBagsLabel)
-        private val weight = itemView.findViewById<TextView>(R.id.tripListRVRowWeightLabel)
         private val weather = itemView.findViewById<ImageView>(R.id.itemsListRVRowWeatherDisplay)
         private val numItems = itemView.findViewById<TextView>(R.id.tripsListRVRowNumItemsLabel)
         private val date = itemView.findViewById<TextView>(R.id.tripsListRVRowDateLabel)
+        private val weight = itemView.findViewById<TextView>(R.id.tripListRVRowWeightLabel)
+        private val location = itemView.findViewById<TextView>(R.id.tripsListRVRowLoacationLabel)
+
 
 
         fun bind(variable:Trip) {
             title.text = variable.title
-            bags.text = variable.bags
-            weight.text = variable.weight
-//            weather.text = text.weather
-            numItems.text = variable.numItems
+            weight.text = "todo"
+//            weather.text = variable.weather
+            numItems.text = variable.items?.size.toString() + " Items"
             date.text = variable.date
+            location.text = variable.location
         }
     }
 }

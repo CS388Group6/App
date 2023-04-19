@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -23,22 +25,44 @@ import com.google.firebase.ktx.Firebase
 class TripList: AppCompatActivity() {
     private lateinit var database: DatabaseReference
     private lateinit var adapter: TripListAdapter
-//    private val trips = java.util.ArrayList<Trip>()
+    private lateinit var auth: FirebaseAuth
+    private lateinit var user: String
+    private val trips = mutableListOf<Trip>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.trips_list_screen)
         database = FirebaseDatabase.getInstance().reference
+        auth = Firebase.auth
+        user = auth.currentUser?.uid ?: ""
         val recyclerView = findViewById<RecyclerView>(R.id.tripsListRV)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        adapter = TripListAdapter(ArrayList())
-        recyclerView.adapter = adapter
+
+
+        database.child("Trips").orderByChild("userID").equalTo(user).addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                trips.clear()
+                if (snapshot.exists()){
+                    for (trip in snapshot.children){
+                        val tripdata = trip.getValue(Trip::class.java)
+                        trips.add(tripdata!!)
+                    }
+
+                    adapter = TripListAdapter(trips)
+                    recyclerView.adapter = adapter
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+
+        })
 
         //Add trip button
         findViewById<FloatingActionButton>(R.id.floatingActionButton).setOnClickListener {
             val intent = Intent(this, TripListAdd::class.java)
             startActivity(intent)
-////            setContentView(R.layout.trips_list_screen)
         }
 
 

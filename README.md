@@ -46,6 +46,7 @@ Packer is an app for helping you plan for your Trip. It will help you keep track
 - [X] Create Add Trip Page
 - [X] Create Add My Item Page
 - [X] UI Design Refinement
+- [X] Created all the views needed for this project
 - [ ] The ability to create a trip. You can specify the type of trip, dates of the trip, and weight limits.
 - [ ] Users can add items and the weight of each item to the trip and our app will add the total weights.
 - [ ] Users can upload images of items
@@ -136,6 +137,10 @@ Packer is an app for helping you plan for your Trip. It will help you keep track
 - [X] Create Add Trip Page
 - [X] Create Add My Item Page
 - [X] UI Design Refinement
+- [X] Created all the views needed for this project
+
+![buildsprint4](https://user-images.githubusercontent.com/90267420/232660647-8f712919-fd4a-4f09-94ef-353512f54bf3.gif)
+
 
 <!--### Unit 12: Build Sprint 5
 
