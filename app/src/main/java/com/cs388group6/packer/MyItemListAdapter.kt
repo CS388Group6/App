@@ -29,12 +29,12 @@ class MyItemListAdapter(private var items: ArrayList<Item>) :
         private val image = itemView.findViewById<ImageView>(R.id.itemsListRVRowImageDisplay)
         private val category = itemView.findViewById<TextView>(R.id.itemsListRVRowCategoryLabel)
 
-
         fun bind(variable: Item) {
             name.text = variable.name
             weight.text = variable.weight
-//            image.text = variable.image
+            // image.text = variable.image
             category.text = variable.category
+
         }
     }
 }
