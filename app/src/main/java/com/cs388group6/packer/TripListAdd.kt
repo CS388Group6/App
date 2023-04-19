@@ -60,15 +60,16 @@ class TripListAdd : AppCompatActivity() {
                 return@setOnClickListener
             }
 
+            var key = database.child("Trips").push().key.toString()
             val trip = Trip(title = tripNameInput.text.toString(),
                 location = tripLocationInput.text.toString(),
                 date = tripDateInput.text.toString(),
                 description = tripDescInput.text.toString(),
                 weather = "",
                 userID = user,
-                items = mutableListOf(String())
+                items = mutableListOf(String()),
+                tripID = key
             )
-            var key = database.child("Trips").push().key.toString()
             database.child("Trips").child(key).setValue(trip)
             finish()
         }

@@ -12,9 +12,19 @@ import java.util.*
 
 class TripListAdapter(private var trips: MutableList<Trip>) :
     RecyclerView.Adapter<TripListAdapter.ViewHolder>() {
+
+    private lateinit var mListener: onItemClickListener
+
+    interface onItemClickListener{
+        fun onItemClick(position: Int)
+    }
+
+    fun setOnItemCLickListener(clickListener: onItemClickListener){
+        mListener = clickListener
+    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.trips_list_rv_row, parent, false)
-        return ViewHolder(view)
+        return ViewHolder(view, mListener)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -25,7 +35,7 @@ class TripListAdapter(private var trips: MutableList<Trip>) :
         return trips.size
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View, clickListener: onItemClickListener) : RecyclerView.ViewHolder(itemView) {
         private val title = itemView.findViewById<TextView>(R.id.tripListRVRowTitleLabel)
         private val weather = itemView.findViewById<ImageView>(R.id.itemsListRVRowWeatherDisplay)
         private val numItems = itemView.findViewById<TextView>(R.id.tripsListRVRowNumItemsLabel)
@@ -42,6 +52,12 @@ class TripListAdapter(private var trips: MutableList<Trip>) :
             numItems.text = variable.items?.size.toString() + " Items"
             date.text = variable.date
             location.text = variable.location
+        }
+
+        init {
+            itemView.setOnClickListener {
+                clickListener.onItemClick(adapterPosition)
+            }
         }
     }
 }

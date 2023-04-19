@@ -38,7 +38,7 @@ class TripList: AppCompatActivity() {
         val recyclerView = findViewById<RecyclerView>(R.id.tripsListRV)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-
+        // getting data from firebase and putting it in recycler view
         database.child("Trips").orderByChild("userID").equalTo(user).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 trips.clear()
@@ -50,6 +50,16 @@ class TripList: AppCompatActivity() {
 
                     adapter = TripListAdapter(trips)
                     recyclerView.adapter = adapter
+
+                    //click on trip handling
+                    adapter.setOnItemCLickListener(object : TripListAdapter.onItemClickListener{
+                        override fun onItemClick(position: Int) {
+                            val intent = Intent(this@TripList, TripOverView::class.java)
+                            intent.putExtra("trip", trips[position].tripID)
+                            startActivity(intent)
+                        }
+
+                    })
                 }
             }
 
