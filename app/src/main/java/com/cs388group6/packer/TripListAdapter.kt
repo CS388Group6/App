@@ -44,7 +44,7 @@ class TripListAdapter(private var trips: MutableList<Trip>) :
 
         //To view details on a click
         holder.itemView.setOnClickListener {
-            val intent = Intent(holder.itemView.context, TripListDetail::class.java)
+            val intent = Intent(holder.itemView.context, TripOverView::class.java)
             holder.itemView.context.startActivity(intent)
         }
 
