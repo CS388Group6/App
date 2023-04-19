@@ -1,8 +1,13 @@
 package com.cs388group6.packer
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.Button
 import android.widget.TextView
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -17,6 +22,9 @@ class TripOverView : AppCompatActivity() {
     private lateinit var dateView: TextView
     private lateinit var addressView: TextView
     private lateinit var descView: TextView
+    private lateinit var editButton: FloatingActionButton
+    private lateinit var deleteButton: FloatingActionButton
+    private lateinit var addItemButton: FloatingActionButton
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,6 +38,9 @@ class TripOverView : AppCompatActivity() {
         dateView = findViewById(R.id.tripOverviewDateLabel)
         addressView = findViewById(R.id.tripOverviewAddressLabel)
         descView = findViewById(R.id.tripOverviewDescriptionLabel)
+        editButton = findViewById(R.id.tripOverviewEditButton)
+        deleteButton = findViewById(R.id.tripOverviewDeleteButton)
+        addItemButton = findViewById(R.id.tripOverviewAddItemButton)
 
 
         val tripID = intent.getStringExtra("trip")
@@ -50,14 +61,23 @@ class TripOverView : AppCompatActivity() {
                 }
 
                 override fun onCancelled(error: DatabaseError) {
-                    TODO("Not yet implemented")
+                    Log.w( "loadPost:onCancelled", error.toException())
                 }
 
             })
         }
 
+        editButton.setOnClickListener {
+            //TODO: send to TripListAdd activity and modify it to handle edits
+        }
 
+        deleteButton.setOnClickListener {
+            //TODO: delete Trip Functionality
+        }
 
+        addItemButton.setOnClickListener {
+            //TODO: add items to trip functionality
+        }
 
     }
 }

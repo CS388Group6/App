@@ -64,7 +64,7 @@ class TripList: AppCompatActivity() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-
+                Log.w( "loadPost:onCancelled", error.toException())
             }
 
         })
