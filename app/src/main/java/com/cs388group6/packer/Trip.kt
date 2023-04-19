@@ -8,5 +8,5 @@ data class Trip (
     var location: String? = null,
     var description: String? = null,
     var userID: String? = null,
-    var items: MutableList<String>,
+    var items: MutableList<String>? = null
 ) : Serializable

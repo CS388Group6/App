@@ -35,8 +35,8 @@
             android:text="21 kg"
             android:textColor="#000000"
             android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="@+id/tripsListRVRowBagsLabel"
-            app:layout_constraintTop_toBottomOf="@+id/tripsListRVRowBagsLabel" />
+            app:layout_constraintStart_toStartOf="@+id/tripsListRVRowLoacationLabel"
+            app:layout_constraintTop_toBottomOf="@+id/tripsListRVRowLoacationLabel" />
 
         <ImageView
             android:id="@+id/itemsListRVRowWeatherDisplay"
@@ -70,11 +70,11 @@
             app:layout_constraintTop_toBottomOf="@+id/tripsListRVRowNumItemsLabel" />
 
         <TextView
-            android:id="@+id/tripsListRVRowBagsLabel"
+            android:id="@+id/tripsListRVRowLoacationLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="2 bags"
+            android:text="Yellow Stone"
             android:textColor="#000000"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@+id/tripListRVRowTitleLabel"

@@ -70,6 +70,7 @@ class TripListAdd : AppCompatActivity() {
             )
             var key = database.child("Trips").push().key.toString()
             database.child("Trips").child(key).setValue(trip)
+            finish()
         }
 
 
