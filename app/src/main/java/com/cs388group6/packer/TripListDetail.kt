@@ -2,7 +2,6 @@ package com.cs388group6.packer
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -11,22 +10,35 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
-class MyItemList : AppCompatActivity(){
+class TripListDetail: AppCompatActivity()  {
     private lateinit var database: DatabaseReference
     private lateinit var adapter: MyItemListAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.my_items_list_screen)
+        setContentView(R.layout.trip_overview_screen)
 
         database = FirebaseDatabase.getInstance().reference
-        val recyclerView = findViewById<RecyclerView>(R.id.myItemsListScreenRV)
+        val recyclerView = findViewById<RecyclerView>(R.id.tripOverviewItemsRV)
         recyclerView.layoutManager = LinearLayoutManager(this)
         adapter = MyItemListAdapter(ArrayList())
         recyclerView.adapter = adapter
 
-        //Add item button
-        findViewById<FloatingActionButton>(R.id.floatingActionButton).setOnClickListener {
-            val intent = Intent(this, MyItemListAdd::class.java)
+
+        //Trip Edit button
+        findViewById<FloatingActionButton>(R.id.tripOverviewEditButton).setOnClickListener {
+            val intent = Intent(this, TripListAdd::class.java)
+            startActivity(intent)
+        }
+
+        //Trip Delete button
+        findViewById<FloatingActionButton>(R.id.tripOverviewDeleteButton).setOnClickListener {
+            val intent = Intent(this, TripListAdd::class.java)
+            startActivity(intent)
+        }
+
+        //Trip Item Add button
+        findViewById<FloatingActionButton>(R.id.tripOverviewAddItemButton).setOnClickListener {
+            val intent = Intent(this, TripListAdd::class.java)
             startActivity(intent)
         }
 
@@ -41,8 +53,7 @@ class MyItemList : AppCompatActivity(){
             }
             true
         }
-        bottomNavigationView1.selectedItemId = R.id.nav_list
-
+        bottomNavigationView1.selectedItemId = R.id.nav_home
         // Bottom Navigation Selection
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottom_navigation)
         bottomNavigationView.setOnItemSelectedListener { item ->
@@ -54,6 +65,5 @@ class MyItemList : AppCompatActivity(){
             }
             true
         }
-
     }
 }

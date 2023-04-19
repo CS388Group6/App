@@ -1,6 +1,8 @@
 package com.cs388group6.packer
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +20,25 @@ class TripListAdapter(private var trips: MutableList<Trip>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        // TO delete a Trip on long click
+        holder.itemView.setOnLongClickListener {
+            Log.v("on click listener","In the system")
+            Log.d("postion", position.toString())
+            val trips :  MutableList<Trip> = trips
+            Log.d("lists", trips.toString())
+            trips.removeAt(position)
+            notifyItemRemoved(position)
+            notifyDataSetChanged()
+            true
+        }
+
+        //To view details on a click
+        holder.itemView.setOnClickListener {
+            val intent = Intent(holder.itemView.context, TripListDetail::class.java)
+            holder.itemView.context.startActivity(intent)
+        }
+
+
         holder.bind(trips[position])
     }
 

@@ -142,7 +142,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="73° Partly Cloudy"
-                app:layout_constraintEnd_toEndOf="@+id/imageView4"
+                app:layout_constraintEnd_toEndOf="@+id/tripOverviewWeatherIcon"
                 app:layout_constraintStart_toStartOf="@+id/tripOverviewWeatherIcon"
                 app:layout_constraintTop_toBottomOf="@+id/tripOverviewWeatherIcon" />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -167,10 +167,17 @@
         android:layout_marginBottom="32dp"
         android:clickable="true"
         app:backgroundTint="#115E59"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/add_icon"
         app:tint="#FFFFFF"
         />
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/bottom_navigation_home_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
