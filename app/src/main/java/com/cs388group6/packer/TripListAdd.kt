@@ -86,6 +86,8 @@ class TripListAdd : AppCompatActivity() {
                 Toast.makeText(this, "Please Enter A Trip Description", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
+            //TODO: Date Input Validation
+
             if (key == "") {
                 key = database.child("Trips").push().key.toString()
             }

@@ -1,11 +1,13 @@
 package com.cs388group6.packer
 
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.database.DataSnapshot
@@ -42,7 +44,7 @@ class TripOverView : AppCompatActivity() {
         deleteButton = findViewById(R.id.tripOverviewDeleteButton)
         addItemButton = findViewById(R.id.tripOverviewAddItemButton)
 
-
+        //Get Trip Information and fill Fields
         val tripID = intent.getStringExtra("trip")
         if (tripID != null) {
             database.child("Trips").child(tripID).addValueEventListener(object :ValueEventListener {
@@ -67,14 +69,32 @@ class TripOverView : AppCompatActivity() {
             })
         }
 
+        //Edit Trip Button
         editButton.setOnClickListener {
             var intent = Intent(this, TripListAdd::class.java)
             intent.putExtra("trip", tripID)
             startActivity(intent)
         }
 
+
+        //Delete Trip Button
         deleteButton.setOnClickListener {
-            //TODO: delete Trip Functionality
+            AlertDialog.Builder(this)
+                .setTitle("Confirm Deletion")
+                .setMessage("This action Cannot be undone. Are you Sure?")
+                .setPositiveButton("Confirm", DialogInterface.OnClickListener{ dialog, id ->
+                    val rem = database.child("Trips").child(tripID.toString()).removeValue()
+                    rem.addOnSuccessListener {
+                        finish()
+                    }.addOnFailureListener{error ->
+                        Log.w("DatabaseError", error)
+                    }
+                })
+                .setNegativeButton("Cancel",
+                    DialogInterface.OnClickListener { dialog, id ->
+                        dialog.cancel()
+                    })
+                .show();
         }
 
         addItemButton.setOnClickListener {
