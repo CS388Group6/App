@@ -65,20 +65,20 @@ class MyItemListAdd : AppCompatActivity() {
             true
         }
 
-        val itemName: String = findViewById<EditText>(R.id.newItemNameInput).text.toString()
-        val itemWeight = findViewById<EditText>(R.id.newItemWeightInput).text.toString()
-        val itemWeightUnit = findViewById<Spinner>(R.id.newItemChooseWeightUnitView).selectedItem.toString()
-        val itemCategory = findViewById<EditText>(R.id.editItemCategoryInput).text.toString()
-        image = findViewById(R.id.newItemImageDisplay)
-
-
         val saveButton = findViewById<Button>(R.id.newItemSaveButton)
         saveButton.setOnClickListener {
+            val itemName: String = findViewById<EditText>(R.id.newItemNameInput).text.toString()
+            val itemWeight = findViewById<EditText>(R.id.newItemWeightInput).text.toString()
+            val itemWeightUnit = findViewById<Spinner>(R.id.newItemChooseWeightUnitView).selectedItem.toString()
+            val itemCategory = findViewById<EditText>(R.id.editItemCategoryInput).text.toString()
+            image = findViewById(R.id.newItemImageDisplay)
+
             // Create image bitmap
             val bitmap = image.drawable.toBitmap(image.width, image.height)
             val imageString = ImageConverter.bitmapToString(bitmap)
 
             val key = database.child("items").push().key.toString()
+
             val item = Item(
                 name = itemName,
                 userID = user,
