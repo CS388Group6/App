@@ -6,12 +6,14 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.tapadoo.alerter.Alerter
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,6 +34,16 @@ class MainActivity : AppCompatActivity() {
                         val intent = Intent(this, TripList::class.java)
                         startActivity(intent)
 
+                    }
+                    else {
+                        Log.w("SignUp", "createUserFailure: ", it.exception )
+                        Alerter.create(this@MainActivity)
+                            .setTitle(it.exception?.message.toString())
+                            .setBackgroundColorRes(R.color.red)
+                            .setIcon(R.drawable.icon_clear)
+                            .show()
+//                        Toast.makeText(baseContext, it.exception?.message ,
+//                            Toast.LENGTH_SHORT).show()
                     }
                 }
         }

@@ -54,7 +54,7 @@ class SignUp : AppCompatActivity(){
                     else {
                         Log.w("SignUp", "createUserFailure: ", task.exception )
                         Alerter.create(this@SignUp)
-                            .setTitle("Try Again")
+                            .setTitle(task.exception?.message.toString())
                             .setBackgroundColorRes(R.color.red)
                             .setIcon(R.drawable.icon_clear)
                             .show()
