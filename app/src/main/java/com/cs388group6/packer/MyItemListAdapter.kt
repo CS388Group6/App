@@ -2,6 +2,8 @@ package com.cs388group6.packer
 
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.BitmapFactory
+import android.util.Base64
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -42,9 +44,13 @@ class MyItemListAdapter(private var items: ArrayList<Item>) :
         private val deleteButton = itemView.findViewById<Button>(R.id.itemsListRVDeleteButton)
 
         fun bind(variable: Item) {
+            // Get image
+            val decodedString: ByteArray = Base64.decode(variable.image, Base64.DEFAULT)
+            var bitmap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size)
+
             name.text = variable.name
             weight.text = variable.weight
-            // image.text = variable.image
+            image.setImageBitmap(bitmap)
             category.text = variable.category
             val itemID = variable.itemID.toString()
             deleteButton.setOnClickListener {
