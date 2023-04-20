@@ -6,5 +6,6 @@ class Item (
     var weight: String? = null,
     var image: String? = null,
     var category: String? = null,
-    var userid: String? = null
+    var userID: String? = null,
+    var itemID: String? = null
 ) : Serializable

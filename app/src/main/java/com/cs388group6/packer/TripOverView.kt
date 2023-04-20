@@ -82,7 +82,7 @@ class TripOverView : AppCompatActivity() {
             AlertDialog.Builder(this)
                 .setTitle("Confirm Deletion")
                 .setMessage("This action Cannot be undone. Are you Sure?")
-                .setPositiveButton("Confirm", DialogInterface.OnClickListener{ dialog, id ->
+                .setPositiveButton("Confirm", DialogInterface.OnClickListener{ _, _ ->
                     val rem = database.child("Trips").child(tripID.toString()).removeValue()
                     rem.addOnSuccessListener {
                         finish()
@@ -90,10 +90,10 @@ class TripOverView : AppCompatActivity() {
                         Log.w("DatabaseError", error)
                     }
                 })
-                .setNegativeButton("Cancel",
-                    DialogInterface.OnClickListener { dialog, id ->
-                        dialog.cancel()
-                    })
+                .setNegativeButton("Cancel"
+                ) { dialog, _ ->
+                    dialog.cancel()
+                }
                 .show();
         }
 

@@ -22,7 +22,7 @@ import java.util.*
 class MyItemListAdd : AppCompatActivity() {
     private lateinit var database: DatabaseReference
     private var auth = Firebase.auth
-    private val user = auth.currentUser
+    private val user = auth.currentUser?.uid ?: ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.item_add_screen)
@@ -65,7 +65,6 @@ class MyItemListAdd : AppCompatActivity() {
         val saveButton = findViewById<Button>(R.id.newItemSaveButton)
         saveButton.setOnClickListener {
             Log.d("ADDING NEW ITEM", "Save Item")
-            val reference = database.child("items")
 
             val itemName: String = findViewById<EditText>(R.id.newItemNameInput).text.toString()
             val itemWeight = findViewById<EditText>(R.id.newItemWeightInput).text.toString()
@@ -77,16 +76,17 @@ class MyItemListAdd : AppCompatActivity() {
             var bitmap = Bitmap.createBitmap(image.width, image.height, Bitmap.Config.ARGB_8888)
             var imageString = ImageConverter.bitmapToString(bitmap)
             Log.d("ADDING NEW ITEM", imageString)
-            val item = mapOf(
-                "userid" to (user?.uid ?: '.'),
-                "name" to itemName,
-                "weight" to "$itemWeight $itemWeightUnit",
-                "image" to imageString,
-                "category" to itemCategory
-            )
 
-            val ref = reference.push()
-            ref.setValue(item)
+            val key = database.child("items").push().key.toString()
+            val item = Item(
+                name = itemName,
+                userID = user,
+                weight = "$itemWeight $itemWeightUnit",
+                image = imageString,
+                category = itemCategory,
+                itemID = key
+            )
+            database.child("items").child(key!!).setValue(item)
             finish()
         }
     }

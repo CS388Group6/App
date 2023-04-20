@@ -3,7 +3,6 @@ package com.cs388group6.packer
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -34,7 +33,7 @@ class MyItemList : AppCompatActivity(){
         val recyclerView = findViewById<RecyclerView>(R.id.myItemsListScreenRV)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        database.child("items").orderByChild("userid").equalTo(user).addValueEventListener(object :
+        database.child("items").orderByChild("userID").equalTo(user).addValueEventListener(object :
             ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 items.clear()
@@ -54,6 +53,10 @@ class MyItemList : AppCompatActivity(){
             }
 
         })
+
+
+
+
 
         //Add item button
         findViewById<FloatingActionButton>(R.id.floatingActionButton).setOnClickListener {
@@ -95,4 +98,5 @@ class MyItemList : AppCompatActivity(){
         }
 
     }
+
 }
