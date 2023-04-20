@@ -24,7 +24,7 @@ class MyItemListAdd : AppCompatActivity() {
     private lateinit var database: DatabaseReference
     private var auth = Firebase.auth
     private val user = auth.currentUser?.uid ?: ""
-    private lateinit var image: ImageButton
+    private var image: ImageButton? = null
     @SuppressLint("CutPasteId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,7 +74,7 @@ class MyItemListAdd : AppCompatActivity() {
             image = findViewById(R.id.newItemImageDisplay)
 
             // Create image bitmap
-            val bitmap = image.drawable.toBitmap(image.width, image.height)
+            val bitmap = image!!.drawable.toBitmap(image!!.width, image!!.height)
             val imageString = ImageConverter.bitmapToString(bitmap)
 
             val key = database.child("items").push().key.toString()
@@ -93,6 +93,9 @@ class MyItemListAdd : AppCompatActivity() {
 
         val changeImage = findViewById<Button>(R.id.newItemChangeImageButton)
         changeImage.setOnClickListener {
+            if (image == null)
+                image = findViewById(R.id.newItemImageDisplay)
+            
             val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
             startActivityForResult(intent, 2)
         }
@@ -102,7 +105,7 @@ class MyItemListAdd : AppCompatActivity() {
         if (requestCode == 2 && resultCode == Activity.RESULT_OK && data != null) {
             val imageUri: Uri = data.data!!
             val bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, imageUri)
-            image.setImageBitmap(bitmap)
+            image!!.setImageBitmap(bitmap)
         }
     }
 }
