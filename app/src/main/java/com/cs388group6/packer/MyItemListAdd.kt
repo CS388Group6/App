@@ -1,28 +1,31 @@
 package com.cs388group6.packer
 
+import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
-import android.graphics.Canvas
-import android.media.Image
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.drawable.toBitmap
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 
-import java.util.*
-
 class MyItemListAdd : AppCompatActivity() {
     private lateinit var database: DatabaseReference
     private var auth = Firebase.auth
     private val user = auth.currentUser?.uid ?: ""
+    private lateinit var image: ImageButton
+    @SuppressLint("CutPasteId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.item_add_screen)
@@ -62,17 +65,17 @@ class MyItemListAdd : AppCompatActivity() {
             true
         }
 
+        val itemName: String = findViewById<EditText>(R.id.newItemNameInput).text.toString()
+        val itemWeight = findViewById<EditText>(R.id.newItemWeightInput).text.toString()
+        val itemWeightUnit = findViewById<Spinner>(R.id.newItemChooseWeightUnitView).selectedItem.toString()
+        val itemCategory = findViewById<EditText>(R.id.editItemCategoryInput).text.toString()
+        image = findViewById(R.id.newItemImageDisplay)
+
+
         val saveButton = findViewById<Button>(R.id.newItemSaveButton)
         saveButton.setOnClickListener {
-
-            val itemName: String = findViewById<EditText>(R.id.newItemNameInput).text.toString()
-            val itemWeight = findViewById<EditText>(R.id.newItemWeightInput).text.toString()
-            val itemWeightUnit = findViewById<Spinner>(R.id.newItemChooseWeightUnitView).selectedItem.toString()
-            val itemCategory = findViewById<EditText>(R.id.editItemCategoryInput).text.toString()
-            val image = findViewById<ImageButton>(R.id.newItemImageDisplay)
-
             // Create image bitmap
-            val bitmap = Bitmap.createBitmap(image.width, image.height, Bitmap.Config.ARGB_8888)
+            val bitmap = image.drawable.toBitmap(image.width, image.height)
             val imageString = ImageConverter.bitmapToString(bitmap)
 
             val key = database.child("items").push().key.toString()
@@ -86,6 +89,20 @@ class MyItemListAdd : AppCompatActivity() {
             )
             database.child("items").child(key).setValue(item)
             finish()
+        }
+
+        val changeImage = findViewById<Button>(R.id.newItemChangeImageButton)
+        changeImage.setOnClickListener {
+            val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+            startActivityForResult(intent, 2)
+        }
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 2 && resultCode == Activity.RESULT_OK && data != null) {
+            val imageUri: Uri = data.data!!
+            val bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, imageUri)
+            image.setImageBitmap(bitmap)
         }
     }
 }

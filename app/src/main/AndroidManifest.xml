@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -24,6 +25,10 @@
         <activity android:name=".SignUp"
             android:exported="true"/>
         <activity android:name=".TripList"
+            android:exported="true"/>
+        <activity android:name=".MyItemListEdit"
+            android:exported="true"/>
+        <activity android:name=".ImagePicker"
             android:exported="true"/>
         <activity
             android:name=".MainActivity"

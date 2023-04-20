@@ -8,7 +8,7 @@ class ImageConverter {
     companion object {
         fun bitmapToString(bitmap: Bitmap): String {
             val byteArrayOutputStream = ByteArrayOutputStream()
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream)
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream)
             val byteArray = byteArrayOutputStream.toByteArray()
             return Base64.encodeToString(byteArray, Base64.DEFAULT)
         }

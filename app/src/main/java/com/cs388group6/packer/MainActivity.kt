@@ -23,31 +23,21 @@ class MainActivity : AppCompatActivity() {
         auth = Firebase.auth
 
         findViewById<Button>(R.id.loginButton).setOnClickListener {
-            var email = findViewById<TextView>(R.id.email).text
-            var password = findViewById<TextView>(R.id.password).text
+            val email = findViewById<TextView>(R.id.email).text
+            val password = findViewById<TextView>(R.id.password).text
 
             auth.signInWithEmailAndPassword(email.toString(), password.toString())
                 .addOnCompleteListener {
                     if (it.isSuccessful) {
-                        Log.d("MAINACTIVITY","USER LOGGED IN")
                         val intent = Intent(this, TripList::class.java)
                         startActivity(intent)
 
                     }
-                    else {
-                        Log.d("MAINACTIVITY", "user fucked")
-
-                    }
                 }
         }
-//        Alerter.create(this@MainActivity)
-//            .setTitle("Alert Title")
-//            .setText("Alert text...")
-//            .show()
         findViewById<Button>(R.id.signUpScreen).setOnClickListener {
             val intent = Intent(this, SignUp::class.java)
             startActivity(intent)
-//            setContentView(R.layout.trips_list_screen)
         }
 
         // Bottom Navigation Selection
@@ -68,25 +58,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             true
-        }
-        //Set default selection
-//        bottomNavigationView.selectedItemId = R.id.nav_login
-
-
-    }
-
-    override fun onStart() {
-        super.onStart()
-
-        val currentUser = auth.currentUser
-
-        Log.d("MAINACTIVITY", currentUser.toString())
-
-        if (currentUser != null) {
-            Log.d("MAINACTIVITY", "USER IS LOGGED IN")
-        }
-        else {
-            Log.d("MAINACTIVITY", "NO USER")
         }
     }
 }

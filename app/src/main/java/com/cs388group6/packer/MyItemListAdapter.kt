@@ -1,6 +1,7 @@
 package com.cs388group6.packer
 
 import android.content.DialogInterface
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.view.menu.MenuView.ItemView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.FirebaseDatabase
 import java.util.ArrayList
@@ -63,7 +65,10 @@ class MyItemListAdapter(private var items: ArrayList<Item>) :
                     .show();
             }
             editButton.setOnClickListener {
-
+                Log.d("EDIT_ITEM", "PRESSED")
+                val intent = Intent(itemView.context, MyItemListEdit::class.java)
+                intent.putExtra("itemID", variable)
+                itemView.context.startActivity(intent)
             }
         }
     }
