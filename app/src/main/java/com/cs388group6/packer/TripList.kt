@@ -1,5 +1,6 @@
 package com.cs388group6.packer
 
+import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
@@ -38,8 +39,12 @@ class TripList: AppCompatActivity() {
         val recyclerView = findViewById<RecyclerView>(R.id.tripsListRV)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
+        adapter = TripListAdapter(trips)
+        recyclerView.adapter = adapter
+
         // getting data from firebase and putting it in recycler view
         database.child("Trips").orderByChild("userID").equalTo(user).addValueEventListener(object : ValueEventListener {
+            @SuppressLint("NotifyDataSetChanged")
             override fun onDataChange(snapshot: DataSnapshot) {
                 trips.clear()
                 if (snapshot.exists()){
@@ -47,9 +52,6 @@ class TripList: AppCompatActivity() {
                         val tripdata = trip.getValue(Trip::class.java)
                         trips.add(tripdata!!)
                     }
-
-                    adapter = TripListAdapter(trips)
-                    recyclerView.adapter = adapter
 
                     //click on trip handling
                     adapter.setOnItemCLickListener(object : TripListAdapter.onItemClickListener{
@@ -61,6 +63,7 @@ class TripList: AppCompatActivity() {
 
                     })
                 }
+                adapter.notifyDataSetChanged()
             }
 
             override fun onCancelled(error: DatabaseError) {
