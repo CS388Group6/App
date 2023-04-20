@@ -87,7 +87,7 @@ class MyItemListAdd : AppCompatActivity() {
 
             val ref = reference.push()
             ref.setValue(item)
-
+            finish()
         }
     }
 }
