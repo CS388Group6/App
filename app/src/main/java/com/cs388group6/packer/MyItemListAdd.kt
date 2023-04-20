@@ -43,7 +43,7 @@ class MyItemListAdd : AppCompatActivity() {
         bottomNavigationView1.selectedItemId = R.id.nav_list
 
         // Bottom Navigation Selection
-        val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottom_navigation)
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_login -> {
@@ -64,7 +64,6 @@ class MyItemListAdd : AppCompatActivity() {
 
         val saveButton = findViewById<Button>(R.id.newItemSaveButton)
         saveButton.setOnClickListener {
-            Log.d("ADDING NEW ITEM", "Save Item")
 
             val itemName: String = findViewById<EditText>(R.id.newItemNameInput).text.toString()
             val itemWeight = findViewById<EditText>(R.id.newItemWeightInput).text.toString()
@@ -73,9 +72,8 @@ class MyItemListAdd : AppCompatActivity() {
             val image = findViewById<ImageButton>(R.id.newItemImageDisplay)
 
             // Create image bitmap
-            var bitmap = Bitmap.createBitmap(image.width, image.height, Bitmap.Config.ARGB_8888)
-            var imageString = ImageConverter.bitmapToString(bitmap)
-            Log.d("ADDING NEW ITEM", imageString)
+            val bitmap = Bitmap.createBitmap(image.width, image.height, Bitmap.Config.ARGB_8888)
+            val imageString = ImageConverter.bitmapToString(bitmap)
 
             val key = database.child("items").push().key.toString()
             val item = Item(
@@ -86,7 +84,7 @@ class MyItemListAdd : AppCompatActivity() {
                 category = itemCategory,
                 itemID = key
             )
-            database.child("items").child(key!!).setValue(item)
+            database.child("items").child(key).setValue(item)
             finish()
         }
     }

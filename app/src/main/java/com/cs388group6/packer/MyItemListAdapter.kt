@@ -44,7 +44,7 @@ class MyItemListAdapter(private var items: ArrayList<Item>) :
             weight.text = variable.weight
             // image.text = variable.image
             category.text = variable.category
-            var itemID = variable.itemID.toString()
+            val itemID = variable.itemID.toString()
             deleteButton.setOnClickListener {
                 val database = FirebaseDatabase.getInstance().reference
                 AlertDialog.Builder(itemView.context)
