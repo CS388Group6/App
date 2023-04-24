@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.google.gson.Gson
 import java.util.*
 
 class TripListAdapter(private var trips: MutableList<Trip>) :
@@ -29,6 +31,7 @@ class TripListAdapter(private var trips: MutableList<Trip>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(trips[position])
+
     }
 
     override fun getItemCount(): Int {
@@ -52,6 +55,15 @@ class TripListAdapter(private var trips: MutableList<Trip>) :
             numItems.text = variable.items?.size.toString() + " Items"
             date.text = variable.date
             location.text = variable.location
+
+            if(variable.weather!="") {
+                val gson = Gson()
+                val weatherData = gson.fromJson(variable.weather, WeatherItem::class.java)
+                Glide.with(itemView)
+                    .load(weatherData?.image)
+                    .centerInside()
+                    .into(weather)
+            }
         }
 
         init {
