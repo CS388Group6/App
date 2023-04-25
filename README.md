@@ -47,11 +47,15 @@ Packer is an app for helping you plan for your Trip. It will help you keep track
 - [X] Create Add My Item Page
 - [X] UI Design Refinement
 - [X] Created all the views needed for this project
-- [ ] The ability to create a trip. You can specify the type of trip, dates of the trip, and weight limits.
-- [ ] Users can add items and the weight of each item to the trip and our app will add the total weights.
-- [ ] Users can upload images of items
-- [ ] Users can delete trips as well
-
+- [X] The ability to create a trip. You can specify the type of trip, dates of the trip, and weight limits.
+- [X] Users can edit the trip.
+- [X] Users can delete the trip.
+- [X] Users can add items and the weight of each item to the trip and our app will add the total weights.
+- [X] Users can upload images of items.
+- [X] Users can edit the items.
+- [X] Users can delete the items.
+- [X] Added an Alerter to login and Signup page.
+- [ ] Users can able to add item to trips.
 
 **Stretch Features**
 
@@ -142,8 +146,19 @@ Packer is an app for helping you plan for your Trip. It will help you keep track
 ![buildsprint4](https://user-images.githubusercontent.com/90267420/232660647-8f712919-fd4a-4f09-94ef-353512f54bf3.gif)
 
 
-<!--### Unit 12: Build Sprint 5
+### Unit 12: Build Sprint 5
+- [X] The ability to create a trip. You can specify the type of trip, dates of the trip, and weight limits.
+- [X] Users can edit the trip.
+- [X] Users can delete the trip.
+- [X] Users can add items and the weight of each item to the trip and our app will add the total weights.
+- [X] Users can upload images of items.
+- [X] Users can edit the items.
+- [X] Users can delete the items.
+- [X] Added an Alerter to login and Signup page.
 
-### Unit 13: Build Sprint 6-->
+![buildsprint5](https://user-images.githubusercontent.com/90267420/234169185-6f4f5873-72f2-454f-8d4d-c5ed53062e78.gif)
+
+
+<!--### Unit 13: Build Sprint 6-->
 
 
