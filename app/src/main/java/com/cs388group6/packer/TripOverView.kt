@@ -1,13 +1,18 @@
 package com.cs388group6.packer
 
+import android.app.Activity
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import com.bumptech.glide.Glide
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.database.DataSnapshot
@@ -15,6 +20,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.gson.Gson
 
 class TripOverView : AppCompatActivity() {
     private lateinit var database: DatabaseReference
@@ -27,6 +33,12 @@ class TripOverView : AppCompatActivity() {
     private lateinit var editButton: FloatingActionButton
     private lateinit var deleteButton: FloatingActionButton
     private lateinit var addItemButton: FloatingActionButton
+    private lateinit var weatherLocationView: TextView
+    private lateinit var weatherConditionView: TextView
+    private lateinit var weatherHighView: TextView
+    private lateinit var weatherLowView: TextView
+    private lateinit var weatherAvgView: TextView
+    private lateinit var weatherIconView: ImageView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,6 +56,15 @@ class TripOverView : AppCompatActivity() {
         deleteButton = findViewById(R.id.tripOverviewDeleteButton)
         addItemButton = findViewById(R.id.tripOverviewAddItemButton)
 
+        weatherIconView = findViewById(R.id.tripOverviewWeatherIcon)
+        weatherLocationView = findViewById(R.id.tripOverviewWeatherLocation)
+        weatherConditionView = findViewById(R.id.tripOverviewConditionLabel)
+        weatherHighView = findViewById(R.id.tripOverviewHighTemperatureLabel)
+        weatherLowView = findViewById(R.id.tripOverviewLowTemperatureLabel)
+        weatherAvgView = findViewById(R.id.tripOverviewAvgTemperatureLabel)
+
+
+
         //Get Trip Information and fill Fields
         val tripID = intent.getStringExtra("trip")
         if (tripID != null) {
@@ -59,6 +80,20 @@ class TripOverView : AppCompatActivity() {
                         dateView.text = trip!!.date
                         addressView.text = trip!!.location
                         descView.text = trip!!.description
+
+                        if(trip!!.weather!="") {
+                            val gson = Gson()
+                            val weatherData = gson.fromJson(trip!!.weather, WeatherItem::class.java)
+                            weatherAvgView.text = "Avg. Temperature: " + weatherData?.avgtemp_f + "° F"
+                            weatherHighView.text = "High Temperature: " + weatherData?.maxtemp_f + "° F"
+                            weatherLowView.text = "Low Temperature: " + weatherData?.mintemp_f + "° F"
+                            weatherLocationView.text = weatherData?.city + ", " + weatherData?.region + ", " + weatherData?.country
+                            weatherConditionView.text = weatherData?.condition
+                            Glide.with(this@TripOverView)
+                                .load(weatherData?.image)
+                                .centerInside()
+                                .into(weatherIconView)
+                        }
                     }
                 }
 

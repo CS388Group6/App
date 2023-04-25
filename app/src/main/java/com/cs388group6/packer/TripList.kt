@@ -127,7 +127,7 @@ class TripList: AppCompatActivity() {
                                     }
 
                                     else{
-                                        database.child("Trips").child(tripdata.tripID!!).child("weather").setValue("")
+                                        //database.child("Trips").child(tripdata.tripID!!).child("weather").setValue("")
                                         Log.w("TripList", "No weather data available for inputted date")
                                     }
 

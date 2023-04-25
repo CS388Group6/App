@@ -1,5 +1,6 @@
 package com.cs388group6.packer
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
@@ -45,9 +46,11 @@ class TripListAdapter(private var trips: MutableList<Trip>) :
         private val date = itemView.findViewById<TextView>(R.id.tripsListRVRowDateLabel)
         private val weight = itemView.findViewById<TextView>(R.id.tripListRVRowWeightLabel)
         private val location = itemView.findViewById<TextView>(R.id.tripsListRVRowLoacationLabel)
+        private val weatherLabel = itemView.findViewById<TextView>(R.id.tripListRVRowWeatherLabel)
 
 
 
+        @SuppressLint("SetTextI18n")
         fun bind(variable:Trip) {
             title.text = variable.title
             weight.text = "todo"
@@ -59,6 +62,7 @@ class TripListAdapter(private var trips: MutableList<Trip>) :
             if(variable.weather!="") {
                 val gson = Gson()
                 val weatherData = gson.fromJson(variable.weather, WeatherItem::class.java)
+                weatherLabel.text = "Average Temperature: " + weatherData?.avgtemp_f + "° F"
                 Glide.with(itemView)
                     .load(weatherData?.image)
                     .centerInside()
