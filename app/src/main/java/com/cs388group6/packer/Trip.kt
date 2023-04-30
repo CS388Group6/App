@@ -1,5 +1,7 @@
 package com.cs388group6.packer
 
+import kotlinx.serialization.json.Json
+import org.json.JSONObject
 import java.io.Serializable
 data class Trip (
     var tripID: String? = null,
