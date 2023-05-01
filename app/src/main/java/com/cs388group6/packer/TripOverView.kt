@@ -94,7 +94,7 @@ class TripOverView : AppCompatActivity() {
 
 
                         titleView.text = trip!!.title
-                        weightView.text = "TODO"
+                        weightView.text = "0 Kilograms/ \n0 Pounds"
                         val itemCount = (trip!!.items?.size?.minus(1))
                         itemCountView.text = itemCount.toString() + " Items"
                         dateView.text = trip!!.date
@@ -205,14 +205,39 @@ class TripOverView : AppCompatActivity() {
                     if (it.result.exists()){
                         for(item in itemIDs){
                             val itemObj = it.result.child(item).getValue(Item::class.java)
-                            Log.d("Item", itemObj.toString())
                             if (itemObj != null){
                                 items.add(itemObj)
                             }
                         }
                     }
-                    adapter.notifyDataSetChanged()
-                }
+                setWeight()
+                adapter.notifyDataSetChanged()
+            }
         }
+    }
+
+    private fun setWeight(){
+        var weightTotal: Float = 0F
+        for(item in items){
+            val weight = item.weight.toString()
+            var weightDetailed = weight.split(" ")
+            Log.d("Weight", weightDetailed[1])
+            when (weightDetailed[1]) {
+                "Grams" -> {
+                    weightTotal += weightDetailed[0].toFloat() / 1000F
+                }
+                "Kilograms" -> {
+                    weightTotal += weightDetailed[0].toFloat()
+                }
+                "Pounds" -> {
+                    weightTotal += weightDetailed[0].toFloat() / 2.205F
+                }
+                "Ounces" -> {
+                    weightTotal += weightDetailed[0].toFloat() / 35.274F
+                }
+            }
+        }
+        val inPounds = weightTotal * 2.205F
+        weightView.text = weightTotal.toString() + " Kilograms/ \n" + inPounds.toString() + " Pounds"
     }
 }
