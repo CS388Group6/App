@@ -1,5 +1,6 @@
 package com.cs388group6.packer
 
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -19,6 +20,9 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
 import org.json.JSONObject
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 class TripListAdd : AppCompatActivity() {
     private lateinit var database: DatabaseReference
@@ -26,10 +30,11 @@ class TripListAdd : AppCompatActivity() {
     private lateinit var user: String
     private lateinit var tripNameInput: EditText
     private lateinit var tripLocationInput: EditText
-    private lateinit var tripDateInput: EditText
+    private lateinit var tripDateInput: Button
     private lateinit var tripDescInput: EditText
     private lateinit var saveButton: Button
     private lateinit var cancelButton: Button
+    private var formatDate = SimpleDateFormat("MMM dd YYYY", Locale.US)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +49,21 @@ class TripListAdd : AppCompatActivity() {
         tripDescInput = findViewById(R.id.editTripDescriptionInput)
         saveButton = findViewById(R.id.editTripSaveButton)
         cancelButton = findViewById(R.id.editTripCancelButton)
+
+        tripDateInput.setOnClickListener {
+            val getDate = Calendar.getInstance()
+            val datePicker = DatePickerDialog(this, android.R.style.ThemeOverlay_Material_Dialog, DatePickerDialog.OnDateSetListener { datePicker, i, i2, i3 ->
+
+                val selectedDate = Calendar.getInstance()
+                selectedDate.set(Calendar.YEAR, i)
+                selectedDate.set(Calendar.MONTH, i2)
+                selectedDate.set(Calendar.DAY_OF_MONTH, i3)
+                val date = formatDate.format(selectedDate.time)
+                tripDateInput.text = date
+
+            }, getDate.get(Calendar.YEAR), getDate.get(Calendar.MONTH), getDate.get(Calendar.DAY_OF_MONTH))
+            datePicker.show()
+        }
 
         var key = intent.getStringExtra("trip")
 

@@ -44,7 +44,6 @@ class TripListAdapter(private var trips: MutableList<Trip>) :
         private val weather = itemView.findViewById<ImageView>(R.id.itemsListRVRowWeatherDisplay)
         private val numItems = itemView.findViewById<TextView>(R.id.tripsListRVRowNumItemsLabel)
         private val date = itemView.findViewById<TextView>(R.id.tripsListRVRowDateLabel)
-        private val weight = itemView.findViewById<TextView>(R.id.tripListRVRowWeightLabel)
         private val location = itemView.findViewById<TextView>(R.id.tripsListRVRowLoacationLabel)
         private val weatherLabel = itemView.findViewById<TextView>(R.id.tripListRVRowWeatherLabel)
 
@@ -53,8 +52,6 @@ class TripListAdapter(private var trips: MutableList<Trip>) :
         @SuppressLint("SetTextI18n")
         fun bind(variable:Trip) {
             title.text = variable.title
-            weight.text = "todo"
-//            weather.text = variable.weather
             val itemcount = variable.items?.size?.minus(1)
             numItems.text = itemcount.toString() + " Items"
             date.text = variable.date
