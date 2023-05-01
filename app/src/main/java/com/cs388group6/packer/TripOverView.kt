@@ -114,6 +114,7 @@ class TripOverView : AppCompatActivity() {
                                 .into(weatherIconView)
                         }
 
+                        itemIDs.clear()
                         for (itemID in snapshot.child("items").children){
                             val idCheck = itemID.value.toString()
                             if (idCheck != ""){
