@@ -44,6 +44,7 @@ class TripOverView : AppCompatActivity() {
     private lateinit var weatherLowView: TextView
     private lateinit var weatherAvgView: TextView
     private lateinit var weatherIconView: ImageView
+    private lateinit var tripID: String
 
     private lateinit var auth: FirebaseAuth
     private lateinit var userID: String
@@ -84,7 +85,7 @@ class TripOverView : AppCompatActivity() {
 
 
         //Get Trip Information and fill Fields
-        val tripID = intent.getStringExtra("trip")
+        tripID = intent.getStringExtra("trip").toString()
         if (tripID != null) {
             database.child("Trips").child(tripID).addValueEventListener(object :ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
@@ -195,13 +196,13 @@ class TripOverView : AppCompatActivity() {
 
     //works until you add a new item for some reason
     private fun loadItems(itemIDs: MutableList<String>, recyclerView: RecyclerView){
+        items.clear()
+        val adapter = TripOverViewAdapter(items, tripID)
+        recyclerView.adapter = adapter
         if (itemIDs.isNotEmpty()){
-            val adapter = MyItemListAdapter(items)
-            recyclerView.adapter = adapter
             val itemSnap = database.child("items").orderByChild("userID").equalTo(userID).get()
             itemSnap.addOnCompleteListener {
                     if (it.result.exists()){
-                        items.clear()
                         for(item in itemIDs){
                             val itemObj = it.result.child(item).getValue(Item::class.java)
                             Log.d("Item", itemObj.toString())
