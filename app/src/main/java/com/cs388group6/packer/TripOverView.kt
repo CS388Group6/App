@@ -13,13 +13,18 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import com.bumptech.glide.Glide
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.ktx.Firebase
 import com.google.gson.Gson
 
 class TripOverView : AppCompatActivity() {
@@ -40,6 +45,9 @@ class TripOverView : AppCompatActivity() {
     private lateinit var weatherAvgView: TextView
     private lateinit var weatherIconView: ImageView
 
+    private lateinit var auth: FirebaseAuth
+    private lateinit var userID: String
+    private lateinit var items: ArrayList<Item>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,6 +71,16 @@ class TripOverView : AppCompatActivity() {
         weatherLowView = findViewById(R.id.tripOverviewLowTemperatureLabel)
         weatherAvgView = findViewById(R.id.tripOverviewAvgTemperatureLabel)
 
+
+
+        auth = Firebase.auth
+        userID = auth.currentUser?.uid ?: ""
+
+        val itemIDs = mutableListOf<String>()
+        val recyclerView = findViewById<RecyclerView>(R.id.tripOverviewItemsRV)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
+        items = ArrayList()
 
 
         //Get Trip Information and fill Fields
@@ -94,6 +112,11 @@ class TripOverView : AppCompatActivity() {
                                 .centerInside()
                                 .into(weatherIconView)
                         }
+
+                        for (itemID in snapshot.child("items").children){
+                            itemIDs.add(itemID.value.toString())
+                        }
+                        loadItems(itemIDs, recyclerView)
                     }
                 }
 
@@ -133,7 +156,9 @@ class TripOverView : AppCompatActivity() {
         }
 
         addItemButton.setOnClickListener {
-            //TODO: add items to trip functionality
+            var intent = Intent(this, AddItemToTrip::class.java)
+            intent.putExtra("trip", tripID)
+            startActivity(intent)
         }
 
         //Set default selection
@@ -161,5 +186,33 @@ class TripOverView : AppCompatActivity() {
         }
 
 
+    }
+
+    //THIS DOES NOT WORK
+    private fun loadItems(itemIDs: MutableList<String>, recyclerView: RecyclerView){
+        if (itemIDs.isNotEmpty()){
+
+            database.child("items").orderByChild("userid").equalTo(userID).addValueEventListener(object :ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()){
+                        Log.d("snapshot", snapshot.toString())
+                        for(item in itemIDs){
+                            val itemObj = snapshot.child(item).getValue(Item::class.java)
+                            Log.d("Item", itemObj.toString())
+                            if (itemObj != null){
+                                items.add(itemObj)
+                            }
+                        }
+                        val adapter = MyItemListAdapter(items)
+                        recyclerView.adapter = adapter
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Log.w( "loadPost:onCancelled", error.toException())
+                }
+            })
+
+        }
     }
 }
