@@ -16,6 +16,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
 import org.json.JSONObject
 
@@ -89,9 +90,10 @@ class TripListAdd : AppCompatActivity() {
                 return@setOnClickListener
             }
             //TODO: Date Input Validation
-
+            var new = false
             if (key == "") {
                 key = database.child("Trips").push().key.toString()
+                new = true
             }
             val trip = Trip(title = tripNameInput.text.toString(),
                 location = tripLocationInput.text.toString(),
@@ -102,7 +104,21 @@ class TripListAdd : AppCompatActivity() {
                 items = mutableListOf(String()),
                 tripID = key
             )
-            database.child("Trips").child(key!!).setValue(trip)
+            if (new){
+                database.child("Trips").child(key!!).setValue(trip)
+            }
+            else{
+                val itemget = database.child("Trips").child(trip.tripID.toString()).child("items").get()
+                itemget.addOnCompleteListener {
+                    var tItems = mutableListOf<String>()
+                    for (item in it.result.children){
+                        val itemData = item.getValue<String>().toString()
+                        tItems.add(itemData)
+                    }
+                    trip.items = tItems
+                    database.child("Trips").child(key!!).setValue(trip)
+                }
+            }
             finish()
         }
 
