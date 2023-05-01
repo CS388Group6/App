@@ -55,7 +55,8 @@ class TripListAdapter(private var trips: MutableList<Trip>) :
             title.text = variable.title
             weight.text = "todo"
 //            weather.text = variable.weather
-            numItems.text = variable.items?.size.toString() + " Items"
+            val itemcount = variable.items?.size?.minus(1)
+            numItems.text = itemcount.toString() + " Items"
             date.text = variable.date
             location.text = variable.location
 

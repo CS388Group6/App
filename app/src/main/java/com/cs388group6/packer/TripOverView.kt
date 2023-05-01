@@ -94,7 +94,8 @@ class TripOverView : AppCompatActivity() {
 
                         titleView.text = trip!!.title
                         weightView.text = "TODO"
-                        itemCountView.text = trip!!.items?.size.toString()
+                        val itemCount = (trip!!.items?.size?.minus(1))
+                        itemCountView.text = itemCount.toString() + " Items"
                         dateView.text = trip!!.date
                         addressView.text = trip!!.location
                         descView.text = trip!!.description
@@ -114,7 +115,10 @@ class TripOverView : AppCompatActivity() {
                         }
 
                         for (itemID in snapshot.child("items").children){
-                            itemIDs.add(itemID.value.toString())
+                            val idCheck = itemID.value.toString()
+                            if (idCheck != ""){
+                                itemIDs.add(idCheck)
+                            }
                         }
                         loadItems(itemIDs, recyclerView)
                     }
@@ -188,31 +192,25 @@ class TripOverView : AppCompatActivity() {
 
     }
 
-    //THIS DOES NOT WORK
+    //works until you add a new item for some reason
     private fun loadItems(itemIDs: MutableList<String>, recyclerView: RecyclerView){
         if (itemIDs.isNotEmpty()){
-
-            database.child("items").orderByChild("userid").equalTo(userID).addValueEventListener(object :ValueEventListener{
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    if (snapshot.exists()){
-                        Log.d("snapshot", snapshot.toString())
+            val adapter = MyItemListAdapter(items)
+            recyclerView.adapter = adapter
+            val itemSnap = database.child("items").orderByChild("userID").equalTo(userID).get()
+            itemSnap.addOnCompleteListener {
+                    if (it.result.exists()){
+                        items.clear()
                         for(item in itemIDs){
-                            val itemObj = snapshot.child(item).getValue(Item::class.java)
+                            val itemObj = it.result.child(item).getValue(Item::class.java)
                             Log.d("Item", itemObj.toString())
                             if (itemObj != null){
                                 items.add(itemObj)
                             }
                         }
-                        val adapter = MyItemListAdapter(items)
-                        recyclerView.adapter = adapter
                     }
+                    adapter.notifyDataSetChanged()
                 }
-
-                override fun onCancelled(error: DatabaseError) {
-                    Log.w( "loadPost:onCancelled", error.toException())
-                }
-            })
-
         }
     }
 }

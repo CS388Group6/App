@@ -44,13 +44,14 @@ class MyItemListAdapter(private var items: ArrayList<Item>) :
         private val deleteButton = itemView.findViewById<Button>(R.id.itemsListRVDeleteButton)
 
         fun bind(variable: Item) {
-            // Get image
-            val decodedString: ByteArray = Base64.decode(variable.image, Base64.DEFAULT)
-            var bitmap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size)
+            if (variable.image != null){
+                val decodedString: ByteArray = Base64.decode(variable.image, Base64.DEFAULT)
+                var bitmap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size)
+                image.setImageBitmap(bitmap)
+            }
 
             name.text = variable.name
             weight.text = variable.weight
-            image.setImageBitmap(bitmap)
             category.text = variable.category
             val itemID = variable.itemID.toString()
             deleteButton.setOnClickListener {
