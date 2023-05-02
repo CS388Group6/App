@@ -55,10 +55,13 @@ Packer is an app for helping you plan for your Trip. It will help you keep track
 - [X] Users can edit the items.
 - [X] Users can delete the items.
 - [X] Added an Alerter to login and Signup page.
-- [ ] Users can able to add item to trips.
+- [X] Users can able to add item to trips.
+- [X] Cleaning up the project.
+- [X] Extensive Testing.
 
 **Stretch Features**
 
+- [X] Weather information displayed.
 - [ ] The ability to export trips to a csv/pdf
 - [ ] The ability to take pictures directly within the app.
 - [ ] The ability to make copies of trips
@@ -159,6 +162,11 @@ Packer is an app for helping you plan for your Trip. It will help you keep track
 ![buildsprint5](https://user-images.githubusercontent.com/90267420/234169185-6f4f5873-72f2-454f-8d4d-c5ed53062e78.gif)
 
 
-<!--### Unit 13: Build Sprint 6-->
+### Unit 13: Build Sprint 6
+- [X] Users can able to add item to trips.
+- [X] Cleaning up the project.
+- [X] Extensive Testing.
+- [X] Weather information displayed.
 
+![buildsprint6](https://user-images.githubusercontent.com/90267420/235565254-ae6cd4f1-1ca4-4e38-9ffe-c9ba3ff6f896.gif)
 
