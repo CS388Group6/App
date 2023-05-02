@@ -8,7 +8,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler.JSON
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -19,9 +18,9 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
-import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Date
 import java.util.Locale
 
 class TripListAdd : AppCompatActivity() {
@@ -34,7 +33,8 @@ class TripListAdd : AppCompatActivity() {
     private lateinit var tripDescInput: EditText
     private lateinit var saveButton: Button
     private lateinit var cancelButton: Button
-    private var formatDate = SimpleDateFormat("MMM dd YYYY", Locale.US)
+    private val formatDate = SimpleDateFormat("MMM dd YYYY", Locale.US)
+    private lateinit var dateTime : Date
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,6 +58,7 @@ class TripListAdd : AppCompatActivity() {
                 selectedDate.set(Calendar.YEAR, i)
                 selectedDate.set(Calendar.MONTH, i2)
                 selectedDate.set(Calendar.DAY_OF_MONTH, i3)
+                dateTime = selectedDate.time
                 val date = formatDate.format(selectedDate.time)
                 tripDateInput.text = date
 
@@ -77,7 +78,8 @@ class TripListAdd : AppCompatActivity() {
                         tripNameInput.setText(trip!!.title)
                         tripLocationInput.setText(trip!!.location)
                         tripDescInput.setText(trip!!.description)
-                        tripDateInput.setText(trip!!.date)
+                        dateTime = trip!!.date!!
+                        tripDateInput.setText(formatDate.format(dateTime))
                     }
                 }
 
@@ -117,7 +119,7 @@ class TripListAdd : AppCompatActivity() {
             }
             val trip = Trip(title = tripNameInput.text.toString(),
                 location = tripLocationInput.text.toString(),
-                date = tripDateInput.text.toString(),
+                date = dateTime,
                 description = tripDescInput.text.toString(),
                 weather = "",
                 userID = user,

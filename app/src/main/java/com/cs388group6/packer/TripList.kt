@@ -29,6 +29,7 @@ import kotlinx.serialization.json.Json
 import okhttp3.Headers
 import org.json.JSONException
 import org.json.JSONObject
+import java.text.SimpleDateFormat
 
 private const val SEARCH_API_KEY = BuildConfig.API_KEY
 
@@ -107,7 +108,9 @@ class TripList: AppCompatActivity() {
 
                                     //Checks if any days pulled from the forecast match the dates in the api call
                                     for (day in weatherJson.forecast.forecastDays!!){
-                                        if(day.date != tripdata.date){
+                                        val tripDate = SimpleDateFormat("YYYY-MM-dd").format(tripdata.date)
+                                        Log.d("Weather", tripDate)
+                                        if(day.date != tripDate){
                                             continue
                                         }
                                         else{

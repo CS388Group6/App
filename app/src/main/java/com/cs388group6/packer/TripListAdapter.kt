@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.gson.Gson
+import java.text.SimpleDateFormat
 import java.util.*
 
 class TripListAdapter(private var trips: MutableList<Trip>) :
@@ -46,6 +47,7 @@ class TripListAdapter(private var trips: MutableList<Trip>) :
         private val date = itemView.findViewById<TextView>(R.id.tripsListRVRowDateLabel)
         private val location = itemView.findViewById<TextView>(R.id.tripsListRVRowLoacationLabel)
         private val weatherLabel = itemView.findViewById<TextView>(R.id.tripListRVRowWeatherLabel)
+        private val formatDate = SimpleDateFormat("MMM dd YYYY", Locale.US)
 
 
 
@@ -54,7 +56,7 @@ class TripListAdapter(private var trips: MutableList<Trip>) :
             title.text = variable.title
             val itemcount = variable.items?.size?.minus(1)
             numItems.text = itemcount.toString() + " Items"
-            date.text = variable.date
+            date.text = formatDate.format(variable.date)
             location.text = variable.location
 
             if(variable.weather!="") {

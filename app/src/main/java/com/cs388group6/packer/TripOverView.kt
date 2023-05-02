@@ -26,6 +26,8 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
 import com.google.gson.Gson
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class TripOverView : AppCompatActivity() {
     private lateinit var database: DatabaseReference
@@ -45,7 +47,7 @@ class TripOverView : AppCompatActivity() {
     private lateinit var weatherAvgView: TextView
     private lateinit var weatherIconView: ImageView
     private lateinit var tripID: String
-
+    private val formatDate = SimpleDateFormat("MMM dd YYYY", Locale.US)
     private lateinit var auth: FirebaseAuth
     private lateinit var userID: String
     private lateinit var items: ArrayList<Item>
@@ -97,7 +99,7 @@ class TripOverView : AppCompatActivity() {
                         weightView.text = "0 Kilograms/ \n0 Pounds"
                         val itemCount = (trip!!.items?.size?.minus(1))
                         itemCountView.text = itemCount.toString() + " Items"
-                        dateView.text = trip!!.date
+                        dateView.text = formatDate.format(trip.date)
                         addressView.text = trip!!.location
                         descView.text = trip!!.description
 
