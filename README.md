@@ -1,4 +1,4 @@
-# Milestone 1 - Packer
+# Packer
 
 ## Table of Contents
 
@@ -32,15 +32,36 @@ Packer is an app for helping you plan for your Trip. It will help you keep track
 
 **Required Features**
 
-- [ ] Login screen with login credentials stored in a database
-- [ ] The ability to create a trip. You can specify the type of trip, dates of the trip, and weight limits.
-- [ ] Users can add items and the weight of each item to the trip and our app will add the total weights.
-- [ ] Users can upload images of items
-- [ ] Users can delete trips as well
-- [ ] Bottom navigation bar for traversing pages
+- [X] Setup GitHub issues and project board
+- [X] Design Database Structure and Implement Database
+- [X] Implement Database Using Firebase
+- [X] Implement Auth Using Firebase
+- [X] Create Login Page 
+- [X] Create Sign Up Page 
+- [X] Create Bottom Navigation Bar
+- [X] Login screen with login credentials stored in a database
+- [X] Bottom navigation bar for traversing pages
+- [X] Create Trip List Page 
+- [X] Create My Items list Page 
+- [X] Create Add Trip Page
+- [X] Create Add My Item Page
+- [X] UI Design Refinement
+- [X] Created all the views needed for this project
+- [X] The ability to create a trip. You can specify the type of trip, dates of the trip, and weight limits.
+- [X] Users can edit the trip.
+- [X] Users can delete the trip.
+- [X] Users can add items and the weight of each item to the trip and our app will add the total weights.
+- [X] Users can upload images of items.
+- [X] Users can edit the items.
+- [X] Users can delete the items.
+- [X] Added an Alerter to login and Signup page.
+- [X] Users can able to add item to trips.
+- [X] Cleaning up the project.
+- [X] Extensive Testing.
 
 **Stretch Features**
 
+- [X] Weather information displayed.
 - [ ] The ability to export trips to a csv/pdf
 - [ ] The ability to take pictures directly within the app.
 - [ ] The ability to make copies of trips
@@ -96,4 +117,61 @@ Packer is an app for helping you plan for your Trip. It will help you keep track
 ### [BONUS] Digital Wireframes & Mockups
 <img src="https://user-images.githubusercontent.com/90267420/226501407-c100518b-4c95-4a6c-9420-faa90f713a99.png" width=600>
 
-### [BONUS] Interactive Prototype
+## Progress
+
+### Unit 8: Build Sprint 1
+- [X] Setup GitHub issues and project board
+##### NO GIF for this week as we just setup github
+### Unit 9: Build Sprint 2
+- [X] Design Database Structure and Implement Database
+![database structure](https://user-images.githubusercontent.com/90267420/229670821-0500766e-66ea-48ad-adfb-e2371bc7f159.gif)
+
+### Unit 10: Build Sprint 3
+- [X] Implement Database Using Firebase
+- [X] Implement Auth Using Firebase
+- [X] Create Login Page 
+- [X] Create Sign Up Page 
+- [X] Create Bottom Navigation Bar
+
+![buildsprint3](https://user-images.githubusercontent.com/90267420/231060432-057c26d6-c0b3-4aec-8a15-f1bf4bc6951d.gif)
+
+
+### Unit 11: Build Sprint 4
+- [X] Login screen with login credentials stored in a database
+- [X] Bottom navigation bar for traversing pages
+- [X] Create Trip List Page 
+- [X] Create My Items list Page 
+- [X] Create Add Trip Page
+- [X] Create Add My Item Page
+- [X] UI Design Refinement
+- [X] Created all the views needed for this project
+
+![buildsprint4](https://user-images.githubusercontent.com/90267420/232660647-8f712919-fd4a-4f09-94ef-353512f54bf3.gif)
+
+
+### Unit 12: Build Sprint 5
+- [X] The ability to create a trip. You can specify the type of trip, dates of the trip, and weight limits.
+- [X] Users can edit the trip.
+- [X] Users can delete the trip.
+- [X] Users can add items and the weight of each item to the trip and our app will add the total weights.
+- [X] Users can upload images of items.
+- [X] Users can edit the items.
+- [X] Users can delete the items.
+- [X] Added an Alerter to login and Signup page.
+
+![buildsprint5](https://user-images.githubusercontent.com/90267420/234169185-6f4f5873-72f2-454f-8d4d-c5ed53062e78.gif)
+
+
+### Unit 13: Build Sprint 6
+- [X] Users can able to add item to trips.
+- [X] Cleaning up the project.
+- [X] Extensive Testing.
+- [X] Weather information displayed.
+
+![buildsprint6](https://user-images.githubusercontent.com/90267420/235565254-ae6cd4f1-1ca4-4e38-9ffe-c9ba3ff6f896.gif)
+
+# Demo Video
+
+[![Alt text](https://img.youtube.com/vi/El53WEj3-sM/0.jpg)](https://www.youtube.com/watch?v=El53WEj3-sM)
+
+Sorry, There is no audio in this demo video.
